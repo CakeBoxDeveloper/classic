@@ -18,37 +18,34 @@
             overflow-x: hidden;
         }
 
-        /* --- 1. Исправленный Header с Логотипом --- */
+        /* --- Header --- */
         header {
-            padding: 15px;
+            padding: 20px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 4px;
             margin: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         .logo-container img {
-            max-height: 80px; /* Оптимальный размер для шапки */
+            max-height: 100px;
             width: auto;
-            display: block;
-            filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+            display: inline-block;
+            /* Убрано всё свечение и обводки */
         }
 
-        /* Carousel Section */
+        /* --- Carousel Section --- */
         .carousel-section {
             padding: 10px 20px;
             position: relative;
-            min-height: 480px;
+            min-height: 450px;
         }
 
         .carousel-container {
             position: relative;
-            height: 450px;
+            height: 420px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -57,128 +54,167 @@
 
         .carousel-slide {
             position: absolute;
-            width: 260px;
-            height: 380px;
-            border-radius: 16px;
+            width: 240px;
+            height: 360px;
+            border-radius: 4px;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            background: #202040;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        /* Заглушки фото вместо видео */
         .carousel-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        /* --- 2. Исправленный блок контента (Мягкий переход) --- */
+        /* --- Исправленный Блюр/Градиент --- */
         .slide-content {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 60px 20px 25px; /* Увеличили верхний отступ для растяжки градиента */
-            /* Плавный градиент от прозрачного к черному с поддержкой блюра */
+            padding: 80px 20px 20px; /* Увеличен отступ для мягкости */
+            /* Плавное затухание: от черного к прозрачному без резких границ */
             background: linear-gradient(
                 to top, 
                 rgba(0, 0, 0, 0.9) 0%, 
-                rgba(0, 0, 0, 0.6) 40%, 
-                rgba(0, 0, 0, 0.2) 70%, 
-                transparent 100%
+                rgba(0, 0, 0, 0.7) 30%, 
+                rgba(0, 0, 0, 0.3) 60%, 
+                rgba(0, 0, 0, 0) 100%
             );
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px); /* Легкий блюр только в нижней части */
         }
 
         .trainer-name {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
-            margin-bottom: 5px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 8px;
         }
 
         .trainer-skills {
             font-size: 13px;
-            opacity: 0.8;
-            line-height: 1.3;
+            opacity: 0.9;
+            line-height: 1.4;
         }
 
-        /* Carousel positioning */
+        /* Позиционирование карусели */
         .carousel-slide[data-position="0"] { transform: translateX(0) scale(1); z-index: 5; opacity: 1; }
-        .carousel-slide[data-position="1"] { transform: translateX(200px) scale(0.85); z-index: 4; opacity: 0.6; }
-        .carousel-slide[data-position="-1"] { transform: translateX(-200px) scale(0.85); z-index: 4; opacity: 0.6; }
+        .carousel-slide[data-position="1"] { transform: translateX(180px) scale(0.85); z-index: 4; opacity: 0.7; }
+        .carousel-slide[data-position="-1"] { transform: translateX(-180px) scale(0.85); z-index: 4; opacity: 0.7; }
         .carousel-slide[data-position="2"], .carousel-slide[data-position="-2"] { opacity: 0; pointer-events: none; }
 
-        /* Stats & Other */
-        .about-section { padding: 20px; max-width: 1200px; margin: 0 auto; }
+        /* --- About Section --- */
+        .about-section {
+            padding: 10px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .about-text {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            border-radius: 4px;
             padding: 25px;
             margin-bottom: 20px;
-            line-height: 1.6;
+            line-height: 1.8;
+            font-size: 16px;
         }
 
+        /* --- Dashboard --- */
         .dashboard {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
+            margin-top: 20px;
         }
 
         .stat-card {
             background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 4px;
+            padding: 25px;
             text-align: center;
+            transition: transform 0.3s;
         }
 
+        .stat-icon { width: 50px; height: 50px; margin: 0 auto 15px; }
         .stat-number {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* Стили для ссылок */
-        .contacts-section { padding: 20px; max-width: 1200px; margin: 0 auto; }
+        /* --- Contacts Section --- */
+        .contacts-section {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .map-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+        }
+
+        .map-container iframe { width: 100%; height: 100%; border: none; }
+
+        .social-links { display: flex; flex-direction: column; gap: 15px; }
         .social-link {
             display: flex;
             align-items: center;
             gap: 15px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 20px;
             text-decoration: none;
             color: #fff;
-            margin-bottom: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
         }
 
+        .social-icon { width: 35px; height: 35px; }
+
+        /* Responsive */
         @media (min-width: 768px) {
+            .carousel-slide { width: 280px; height: 420px; }
             .dashboard { grid-template-columns: repeat(4, 1fr); }
-            .carousel-slide { width: 300px; height: 420px; }
+            .contacts-grid { grid-template-columns: auto 1fr; }
+            .map-container { width: 350px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo-container">
-            <img src="https://raw.githubusercontent.com/CakeBoxDeveloper/classic/main/ClassicLogo.png" alt="Classic Fitness Logo">
-        </a>
+        <div class="logo-container">
+            <img src="https://raw.githubusercontent.com/CakeBoxDeveloper/classic/main/ClassicLogo.png" alt="Classic Logo">
+        </div>
     </header>
 
     <section class="carousel-section">
         <div class="carousel-container" id="carousel">
             <div class="carousel-slide" data-index="0" data-position="0">
-                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600" alt="Trainer 1">
+                <img src="https://images.unsplash.com/photo-1583454110551-21f2fa202214?w=600&auto=format&fit=crop" alt="Trainer 1">
                 <div class="slide-content">
                     <div class="trainer-name">Алексей Петров</div>
                     <div class="trainer-skills">Персональные тренировки, силовой тренинг</div>
@@ -186,7 +222,7 @@
             </div>
 
             <div class="carousel-slide" data-index="1" data-position="1">
-                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=600" alt="Trainer 2">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&auto=format&fit=crop" alt="Trainer 2">
                 <div class="slide-content">
                     <div class="trainer-name">Мария Иванова</div>
                     <div class="trainer-skills">Йога, пилатес, стретчинг</div>
@@ -194,7 +230,7 @@
             </div>
 
             <div class="carousel-slide" data-index="2" data-position="2">
-                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=600" alt="Trainer 3">
+                <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&auto=format&fit=crop" alt="Trainer 3">
                 <div class="slide-content">
                     <div class="trainer-name">Дмитрий Соколов</div>
                     <div class="trainer-skills">CrossFit, HIIT, круговые тренировки</div>
@@ -202,7 +238,7 @@
             </div>
 
             <div class="carousel-slide" data-index="3" data-position="-1">
-                <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&q=80&w=600" alt="Trainer 4">
+                <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600&auto=format&fit=crop" alt="Trainer 4">
                 <div class="slide-content">
                     <div class="trainer-name">Елена Волкова</div>
                     <div class="trainer-skills">Танцевальный фитнес, зумба</div>
@@ -213,13 +249,13 @@
 
     <section class="about-section">
         <div class="about-text">
-            Classic Fitness — это премиальное пространство для тех, кто ценит результат и комфорт. Профессиональное оборудование и экспертный подход.
+            Наш фитнес-клуб — это современное пространство для достижения ваших целей. Мы предлагаем профессиональное оборудование и команду сертифицированных тренеров.
         </div>
 
         <div class="dashboard">
             <div class="stat-card">
                 <div class="stat-number" data-target="1250">0</div>
-                <div class="stat-title">Атлетов</div>
+                <div class="stat-title">Клиентов</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" data-target="15">0</div>
@@ -227,7 +263,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-number" data-target="8">0</div>
-                <div class="stat-title">Зон клуба</div>
+                <div class="stat-title">Зон</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" data-target="168">0</div>
@@ -236,8 +272,27 @@
         </div>
     </section>
 
+    <section class="contacts-section">
+        <div class="contacts-grid">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1000!2d30.5!3d50.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2s" loading="lazy"></iframe>
+            </div>
+
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <span class="social-text">Instagram</span>
+                </a>
+                <a href="#" class="social-link">
+                    <span class="social-text">Telegram</span>
+                </a>
+                <a href="tel:+380000000000" class="social-link">
+                    <span class="social-text">+38 (000) 000-00-00</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <script>
-        // JS остается прежним для работы карусели и счетчиков
         let currentIndex = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         const totalSlides = slides.length;
@@ -258,26 +313,30 @@
             });
         });
 
-        // Анимация цифр
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.querySelectorAll('.stat-number').forEach(num => {
-                        const target = +num.getAttribute('data-target');
-                        const count = () => {
-                            const val = +num.innerText;
-                            if (val < target) {
-                                num.innerText = Math.ceil(val + target/50);
-                                setTimeout(count, 30);
-                            } else { num.innerText = target; }
-                        };
-                        count();
-                    });
+        // Анимация счетчиков
+        const animate = (el) => {
+            const target = +el.getAttribute('data-target');
+            let curr = 0;
+            const step = target / 100;
+            const interval = setInterval(() => {
+                curr += step;
+                if (curr >= target) {
+                    el.innerText = target;
+                    clearInterval(interval);
+                } else { el.innerText = Math.floor(curr); }
+            }, 20);
+        };
+
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if(e.isIntersecting) {
+                    e.target.querySelectorAll('.stat-number').forEach(animate);
+                    obs.unobserve(e.target);
                 }
             });
         });
-        observer.observe(document.querySelector('.dashboard'));
-        
+        obs.observe(document.querySelector('.dashboard'));
+
         updateCarousel();
     </script>
 </body>
