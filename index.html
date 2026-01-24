@@ -47,7 +47,7 @@
 
         .carousel-container {
             position: relative;
-            height: 400px;
+            height: 280px;
             width: 100%;
             display: flex;
             align-items: center;
@@ -57,14 +57,15 @@
 
         .carousel-slide {
             position: absolute;
-            width: 70vw;
-            max-width: 300px;
-            height: 380px;
+            width: 50vw;
+            max-width: 200px;
+            height: 260px;
             border-radius: 5px;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             cursor: pointer;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background: #000;
         }
 
         .carousel-slide img {
@@ -73,7 +74,7 @@
             object-fit: cover;
         }
 
-        /* Blur-фильтр снизу до середины */
+        /* Blur-фильтр: 100% прозрачность внизу, 0% в середине */
         .slide-blur {
             position: absolute;
             bottom: 0;
@@ -82,9 +83,8 @@
             height: 50%;
             background: linear-gradient(
                 to top,
-                rgba(0, 0, 0, 0.9) 0%,
-                rgba(0, 0, 0, 0.5) 50%,
-                transparent 100%
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0.9) 100%
             );
             backdrop-filter: blur(3px);
             -webkit-backdrop-filter: blur(3px);
@@ -95,52 +95,61 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 20px;
+            padding: 15px;
             z-index: 2;
         }
 
         .trainer-name {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
         .trainer-skills {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.85;
         }
 
         /* Позиции слайдов для 3D эффекта */
         .carousel-slide[data-position="0"] {
-            transform: translateX(0) scale(1.05);
+            transform: translateX(0) scale(1.1);
             z-index: 10;
             opacity: 1;
         }
 
         .carousel-slide[data-position="1"] {
-            transform: translateX(60%) scale(0.85);
+            transform: translateX(55%) scale(0.8);
             z-index: 5;
-            opacity: 0.5;
+            opacity: 0.6;
         }
 
         .carousel-slide[data-position="-1"] {
-            transform: translateX(-60%) scale(0.85);
+            transform: translateX(-55%) scale(0.8);
             z-index: 5;
-            opacity: 0.5;
+            opacity: 0.6;
         }
 
         .carousel-slide[data-position="hide"] {
             opacity: 0;
             transform: scale(0.5);
             pointer-events: none;
+            z-index: 1;
         }
 
         /* --- About Section --- */
+        .about-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            padding: 25px;
+        }
+
         .about-section h2 {
             font-size: 1.3rem;
             color: #FFD700;
             margin-bottom: 15px;
             font-weight: 700;
+            text-align: center;
         }
 
         .about-section p {
@@ -153,32 +162,32 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 10px;
         }
 
         .stat-card {
             background: rgba(255, 255, 255, 0.05);
-            padding: 25px 15px;
+            padding: 15px 10px;
             border-radius: 5px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .stat-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
         }
 
         .stat-number {
             display: block;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: #FFD700;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             opacity: 0.7;
         }
 
@@ -190,9 +199,15 @@
             border-radius: 5px;
         }
 
+        .cta-section h2 {
+            font-size: 1.3rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
         .cta-quote {
             font-size: 1.1rem;
-            font-style: italic;
             margin-bottom: 25px;
             opacity: 0.9;
             line-height: 1.6;
@@ -221,6 +236,7 @@
             color: #FFD700;
             margin-bottom: 20px;
             font-weight: 700;
+            text-align: center;
         }
 
         .map-box {
@@ -265,11 +281,18 @@
 
         /* Desktop */
         @media (min-width: 768px) {
+            .carousel-container {
+                height: 350px;
+            }
+            .carousel-slide {
+                max-width: 240px;
+                height: 320px;
+            }
             .carousel-slide[data-position="1"] {
-                transform: translateX(250px) scale(0.85);
+                transform: translateX(200px) scale(0.85);
             }
             .carousel-slide[data-position="-1"] {
-                transform: translateX(-250px) scale(0.85);
+                transform: translateX(-200px) scale(0.85);
             }
         }
     </style>
@@ -325,9 +348,7 @@
         <h2>О нас</h2>
         <p>
             Classic Fitness Club — это современный спортивный клуб с 15-летним опытом работы. 
-            Мы предлагаем профессиональные тренировки, индивидуальный подход к каждому клиенту 
-            и комфортные условия для достижения ваших целей. Наши тренеры — сертифицированные 
-            специалисты, готовые помочь вам стать сильнее, здоровее и увереннее в себе.
+            Мы предлагаем профессиональные тренировки и индивидуальный подход к каждому клиенту.
         </p>
     </section>
 
@@ -360,6 +381,7 @@
     <!-- CTA блок -->
     <div class="container">
         <section class="cta-section">
+            <h2>Зачем это мне?</h2>
             <p class="cta-quote" id="motivationQuote"></p>
             <a href="#" class="cta-button">Записаться на тренировку</a>
         </section>
