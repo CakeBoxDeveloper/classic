@@ -18,19 +18,14 @@
             color: #fff;
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Зернистый фон */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.05;
+        /* Контейнер для всех блоков */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 0;
         }
 
         /* --- Header --- */
@@ -40,44 +35,36 @@
         }
 
         .logo-container img {
-            height: 70px;
+            height: 60px;
             width: auto;
         }
 
-        /* --- Carousel Section --- */
+        /* --- Carousel Section (3D эффект) --- */
         .carousel-section {
             padding: 40px 0;
             overflow: hidden;
         }
 
         .carousel-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
             display: flex;
-            gap: 20px;
-            padding: 0 20px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .carousel-container::-webkit-scrollbar {
-            display: none;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
         }
 
         .carousel-slide {
-            flex: 0 0 calc(33.333% - 14px);
-            min-width: 280px;
-            height: 400px;
-            border-radius: 12px;
+            position: absolute;
+            width: 70vw;
+            max-width: 300px;
+            height: 380px;
+            border-radius: 5px;
             overflow: hidden;
-            position: relative;
-            scroll-snap-align: start;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .carousel-slide:hover {
-            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .carousel-slide img {
@@ -95,12 +82,12 @@
             height: 50%;
             background: linear-gradient(
                 to top,
-                rgba(0, 0, 0, 0.8) 0%,
-                rgba(0, 0, 0, 0.4) 50%,
+                rgba(0, 0, 0, 0.9) 0%,
+                rgba(0, 0, 0, 0.5) 50%,
                 transparent 100%
             );
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
         }
 
         .slide-content {
@@ -113,144 +100,150 @@
         }
 
         .trainer-name {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: 5px;
-            color: #fff;
         }
 
         .trainer-skills {
             font-size: 0.9rem;
             opacity: 0.85;
-            line-height: 1.4;
+        }
+
+        /* Позиции слайдов для 3D эффекта */
+        .carousel-slide[data-position="0"] {
+            transform: translateX(0) scale(1.05);
+            z-index: 10;
+            opacity: 1;
+        }
+
+        .carousel-slide[data-position="1"] {
+            transform: translateX(60%) scale(0.85);
+            z-index: 5;
+            opacity: 0.5;
+        }
+
+        .carousel-slide[data-position="-1"] {
+            transform: translateX(-60%) scale(0.85);
+            z-index: 5;
+            opacity: 0.5;
+        }
+
+        .carousel-slide[data-position="hide"] {
+            opacity: 0;
+            transform: scale(0.5);
+            pointer-events: none;
         }
 
         /* --- About Section --- */
-        .about-section {
-            padding: 60px 20px;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
         .about-section h2 {
-            font-size: 2.5rem;
+            font-size: 1.3rem;
             color: #FFD700;
-            margin-bottom: 20px;
-            font-weight: 800;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
 
         .about-section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1rem;
+            line-height: 1.7;
             opacity: 0.9;
         }
 
         /* --- Stats Dashboard --- */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
         }
 
         .stat-card {
             background: rgba(255, 255, 255, 0.05);
-            padding: 30px 20px;
-            border-radius: 12px;
+            padding: 25px 15px;
+            border-radius: 5px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .stat-number {
-            display: block;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #FFD700;
+        .stat-icon {
+            font-size: 2rem;
             margin-bottom: 10px;
         }
 
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #FFD700;
+            margin-bottom: 5px;
+        }
+
         .stat-label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            font-size: 0.9rem;
             opacity: 0.7;
         }
 
         /* --- CTA Section --- */
         .cta-section {
-            padding: 80px 20px;
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px 20px;
+            border-radius: 5px;
         }
 
         .cta-quote {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-style: italic;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             opacity: 0.9;
             line-height: 1.6;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 18px 50px;
+            padding: 15px 40px;
             background: #FFD700;
             color: #1a1a1a;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 700;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 5px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 30px rgba(255, 215, 0, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
         }
 
         /* --- Map & Contacts --- */
-        .contacts-section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
         .contacts-section h2 {
-            font-size: 2.5rem;
+            font-size: 1.3rem;
             color: #FFD700;
-            text-align: center;
-            margin-bottom: 40px;
-            font-weight: 800;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
 
         .map-box {
             width: 100%;
-            height: 350px;
-            border-radius: 12px;
+            height: 300px;
+            border-radius: 5px;
             overflow: hidden;
-            margin-bottom: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 25px;
         }
 
         .social-list {
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .social-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 15px 25px;
+            gap: 15px;
+            padding: 15px 20px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 50px;
+            border-radius: 5px;
             text-decoration: none;
             color: #fff;
             font-weight: 500;
@@ -260,29 +253,23 @@
 
         .social-item:hover {
             background: rgba(255, 215, 0, 0.1);
-            border-color: #FFD700;
+            border-color: rgba(255, 215, 0, 0.3);
         }
 
         .social-item svg {
             width: 24px;
             height: 24px;
             fill: #FFD700;
+            flex-shrink: 0;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .carousel-slide {
-                flex: 0 0 calc(50% - 10px);
+        /* Desktop */
+        @media (min-width: 768px) {
+            .carousel-slide[data-position="1"] {
+                transform: translateX(250px) scale(0.85);
             }
-            .about-section h2,
-            .contacts-section h2 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .carousel-slide {
-                flex: 0 0 calc(100% - 40px);
+            .carousel-slide[data-position="-1"] {
+                transform: translateX(-250px) scale(0.85);
             }
         }
     </style>
@@ -295,9 +282,9 @@
         </div>
     </header>
 
-    <!-- Карусель тренеров -->
+    <!-- Карусель тренеров (3D) -->
     <section class="carousel-section">
-        <div class="carousel-container">
+        <div class="carousel-container" id="carousel">
             <div class="carousel-slide">
                 <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600" alt="Trainer 1">
                 <div class="slide-blur"></div>
@@ -333,8 +320,8 @@
         </div>
     </section>
 
-    <!-- О зале -->
-    <section class="about-section">
+    <!-- О нас -->
+    <section class="about-section container">
         <h2>О нас</h2>
         <p>
             Classic Fitness Club — это современный спортивный клуб с 15-летним опытом работы. 
@@ -344,34 +331,42 @@
         </p>
     </section>
 
-    <!-- Статистика -->
-    <div class="stats-grid">
-        <div class="stat-card">
-            <span class="stat-number" data-target="1250">0</span>
-            <span class="stat-label">Клиентов</span>
-        </div>
-        <div class="stat-card">
-            <span class="stat-number" data-target="15">0</span>
-            <span class="stat-label">Лет опыта</span>
-        </div>
-        <div class="stat-card">
-            <span class="stat-number" data-target="8">0</span>
-            <span class="stat-label">Зон</span>
-        </div>
-        <div class="stat-card">
-            <span class="stat-number" data-target="168">0</span>
-            <span class="stat-label">Часов/нед</span>
+    <!-- Статистика (2x2) -->
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <span class="stat-number" data-target="1250">0</span>
+                <span class="stat-label">Клиентов</span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <span class="stat-number" data-target="15">0</span>
+                <span class="stat-label">Лет опыта</span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏋️</div>
+                <span class="stat-number" data-target="8">0</span>
+                <span class="stat-label">Зон</span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏰</div>
+                <span class="stat-number" data-target="168">0</span>
+                <span class="stat-label">Часов/нед</span>
+            </div>
         </div>
     </div>
 
     <!-- CTA блок -->
-    <section class="cta-section">
-        <p class="cta-quote" id="motivationQuote"></p>
-        <a href="#" class="cta-button">Записаться на тренировку</a>
-    </section>
+    <div class="container">
+        <section class="cta-section">
+            <p class="cta-quote" id="motivationQuote"></p>
+            <a href="#" class="cta-button">Записаться на тренировку</a>
+        </section>
+    </div>
 
     <!-- Контакты -->
-    <section class="contacts-section">
+    <section class="contacts-section container">
         <h2>Контакты</h2>
         
         <div class="map-box">
@@ -401,32 +396,47 @@
     </section>
 
     <script>
-        // Зернистый Canvas-градиент
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-        gradient.addColorStop(0, '#1a1a1a');
-        gradient.addColorStop(1, '#3a3a3a');
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
-        // Добавляем зерно
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const data = imageData.data;
-        for (let i = 0; i < data.length; i += 4) {
-            const noise = Math.random() * 50 - 25;
-            data[i] += noise;
-            data[i + 1] += noise;
-            data[i + 2] += noise;
+        const container = document.getElementById('carousel');
+        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+        let activeIndex = 0;
+
+        function updateCarousel() {
+            slides.forEach((slide, i) => {
+                let diff = i - activeIndex;
+                
+                if (diff > 1) diff = -1; 
+                if (diff < -1) diff = 1;
+
+                if (i === activeIndex) {
+                    slide.setAttribute('data-position', '0');
+                } else if (diff === 1 || (activeIndex === slides.length - 1 && i === 0)) {
+                    slide.setAttribute('data-position', '1');
+                } else if (diff === -1 || (activeIndex === 0 && i === slides.length - 1)) {
+                    slide.setAttribute('data-position', '-1');
+                } else {
+                    slide.setAttribute('data-position', 'hide');
+                }
+            });
         }
-        ctx.putImageData(imageData, 0, 0);
-        
-        document.body.style.background = `url(${canvas.toDataURL()})`;
-        document.body.style.backgroundSize = 'cover';
-        document.body.style.backgroundAttachment = 'fixed';
+
+        slides.forEach((slide, i) => {
+            slide.addEventListener('click', () => {
+                activeIndex = i;
+                updateCarousel();
+            });
+        });
+
+        let touchStart = 0;
+        container.addEventListener('touchstart', e => touchStart = e.touches[0].clientX);
+        container.addEventListener('touchend', e => {
+            let touchEnd = e.changedTouches[0].clientX;
+            if (touchStart - touchEnd > 50) {
+                activeIndex = (activeIndex + 1) % slides.length;
+            } else if (touchStart - touchEnd < -50) {
+                activeIndex = (activeIndex - 1 + slides.length) % slides.length;
+            }
+            updateCarousel();
+        });
 
         // Мотивирующие цитаты
         const quotes = [
@@ -464,6 +474,8 @@
         }, { threshold: 0.3 });
         
         obs.observe(document.querySelector('.stats-grid'));
+
+        updateCarousel();
     </script>
 </body>
 </html>
