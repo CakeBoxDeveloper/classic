@@ -22,15 +22,15 @@ body {
     width: 100%;
     max-width: 100vw;
     
-    /* Трендовый графитово-желтый градиент */
-    background: 
-        radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.15), transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.1), transparent 40%),
-        #1a1a1a; /* Базовый графитовый цвет */
+    /* Графитовый фон с акцентами */
+    background-color: #1a1a1a;
+    background-image: 
+        radial-gradient(circle at 15% 15%, rgba(255, 215, 0, 0.12), transparent 35%),
+        radial-gradient(circle at 85% 85%, rgba(255, 215, 0, 0.08), transparent 35%);
     background-attachment: fixed;
 }
 
-/* Слой с эффектом зернистости (Canvas-эффект) */
+/* Слой мелкого и четкого зерна */
 body::before {
     content: "";
     position: fixed;
@@ -38,9 +38,15 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Используем SVG фильтр шума через data-uri */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.04; /* Тонкая настройка видимости зерна */
+    /* baseFrequency='0.8' делает зерно очень мелким, а numOctaves='4' добавляет резкости */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    
+    /* Небольшое увеличение прозрачности, чтобы мелкое зерно было заметно */
+    opacity: 0.07; 
+    
+    /* Режим наложения soft-light делает зерно более естественным */
+    mix-blend-mode: soft-light;
+    
     pointer-events: none;
     z-index: -1;
 }
