@@ -68,14 +68,14 @@ html {
             perspective: 1000px;
         }
 
- .carousel-slide {
+.carousel-slide {
     position: absolute;
     width: 50vw;
     max-width: 200px;
     height: 260px;
     border-radius: 0;
     overflow: visible;
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     box-shadow: none;
     background: #000;
@@ -508,24 +508,25 @@ html {
         const slides = Array.from(document.querySelectorAll('.carousel-slide'));
         let activeIndex = 0;
 
-        function updateCarousel() {
-            slides.forEach((slide, i) => {
-                let diff = i - activeIndex;
-                
-                if (diff > 1) diff = -1; 
-                if (diff < -1) diff = 1;
+  function updateCarousel() {
+    slides.forEach((slide, i) => {
+        let diff = i - activeIndex;
+        
+        // Зацикливание
+        if (diff > slides.length / 2) diff -= slides.length;
+        if (diff < -slides.length / 2) diff += slides.length;
 
-                if (i === activeIndex) {
-                    slide.setAttribute('data-position', '0');
-                } else if (diff === 1 || (activeIndex === slides.length - 1 && i === 0)) {
-                    slide.setAttribute('data-position', '1');
-                } else if (diff === -1 || (activeIndex === 0 && i === slides.length - 1)) {
-                    slide.setAttribute('data-position', '-1');
-                } else {
-                    slide.setAttribute('data-position', 'hide');
-                }
-            });
+        if (diff === 0) {
+            slide.setAttribute('data-position', '0');
+        } else if (diff === 1) {
+            slide.setAttribute('data-position', '1');
+        } else if (diff === -1) {
+            slide.setAttribute('data-position', '-1');
+        } else {
+            slide.setAttribute('data-position', 'hide');
         }
+    });
+}
 
         slides.forEach((slide, i) => {
             slide.addEventListener('click', () => {
@@ -534,17 +535,30 @@ html {
             });
         });
 
-        let touchStart = 0;
-        container.addEventListener('touchstart', e => touchStart = e.touches[0].clientX);
-        container.addEventListener('touchend', e => {
-            let touchEnd = e.changedTouches[0].clientX;
-            if (touchStart - touchEnd > 50) {
-                activeIndex = (activeIndex + 1) % slides.length;
-            } else if (touchStart - touchEnd < -50) {
-                activeIndex = (activeIndex - 1 + slides.length) % slides.length;
-            }
-            updateCarousel();
-        });
+     let touchStart = 0;
+let touchStartTime = 0;
+
+container.addEventListener('touchstart', e => {
+    touchStart = e.touches[0].clientX;
+    touchStartTime = Date.now();
+});
+
+container.addEventListener('touchend', e => {
+    let touchEnd = e.changedTouches[0].clientX;
+    let touchDuration = Date.now() - touchStartTime;
+    let swipeDistance = touchStart - touchEnd;
+    
+    // Свайп влево - карточка уходит влево
+    if (swipeDistance > 50 && touchDuration < 500) {
+        activeIndex = (activeIndex + 1) % slides.length;
+        updateCarousel();
+    } 
+    // Свайп вправо - карточка приходит справа
+    else if (swipeDistance < -50 && touchDuration < 500) {
+        activeIndex = (activeIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+    }
+});
 
         // Мотивирующие цитаты
         const quotes = [
