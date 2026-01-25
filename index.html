@@ -59,6 +59,7 @@ body::before {
     padding: 20px;
 }
 
+
 .price-card {
     background: rgba(255, 255, 255, 0.05);
     padding: 15px;
@@ -78,20 +79,22 @@ body::before {
 }
 
 .price-name {
-    font-size: 1.4rem; /* Одинаковый размер с ценой */
+    font-size: 0.9rem; /* Уменьшенный размер для влезания в карточку */
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.8;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
     flex: 1;
     color: #FFD700;
+    line-height: 1.2;
 }
         /* Цитата и кнопка под прайсом */
 .price-value {
-    font-size: 1.4rem;
+    font-size: 1.5rem; /* Немного увеличен для контраста */
     font-weight: 800;
     color: #FFD700;
     line-height: 1;
+    margin-left: 8px;
 }
 
 .price-period {
@@ -108,52 +111,55 @@ body::before {
     text-align: center;
 }
 
-        .cta-quote {
-    font-size: 1.1rem;
-    margin-bottom: 8px; /* Уменьшенный отступ */
+
+  .cta-quote {
+    font-size: 1.05rem;
+    margin-bottom: 15px;
     opacity: 0.9;
     line-height: 1.6;
     font-style: italic;
     position: relative;
-    padding: 15px 0;
+    padding: 25px 15px 15px 15px; /* Увеличен верхний padding */
 }
 
 .cta-quote::before {
     content: '"';
-    font-size: 3rem;
-    color: #FFD700;
-    opacity: 0.3;
+    font-size: 3.5rem;
+    color: #FFD700; /* Жёлтый как заголовки */
+    opacity: 0.5;
     position: absolute;
-    left: -10px;
-    top: -10px;
+    left: 5px;
+    top: -5px; /* Подняты вверх */
+    line-height: 1;
 }
 
 .cta-quote::after {
     content: '"';
-    font-size: 3rem;
-    color: #FFD700;
-    opacity: 0.3;
+    font-size: 3.5rem;
+    color: #FFD700; /* Жёлтый как заголовки */
+    opacity: 0.5;
     position: absolute;
-    right: -10px;
-    bottom: -25px;
+    right: 5px;
+    bottom: -20px;
+    line-height: 1;
 }
 
 .quote-author {
     display: block;
     font-size: 0.9rem;
     color: #FFD700;
-    margin-top: 8px;
+    margin-top: 10px;
     font-style: normal;
     opacity: 0.8;
 }
 
-        .cta-button {
+      .cta-button {
     display: block;
     width: 100%;
     padding: 18px 20px;
     background: #FFD700;
     color: #1a1a1a;
-    font-size: 1.3rem; /* Увеличенный размер текста */
+    font-size: 1.2rem;
     font-weight: 700;
     text-decoration: none;
     border-radius: 5px;
