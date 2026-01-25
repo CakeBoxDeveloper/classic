@@ -225,10 +225,52 @@ html {
     font-size: 1rem;
     line-height: 1.7;
     opacity: 0.9;
-    padding: 0 20px 20px 20px;
+    padding: 20px 20px 20px 20px;
     margin: 0;
 }
+        .about-link {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* Стили для блока Направления */
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    perspective: 1000px;
+}
 
+.service-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Начальное состояние для анимации */
+    opacity: 0;
+    transform: translateY(30px) rotateX(-15deg);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Класс, который будет добавляться при скролле */
+.service-item.show {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+}
+
+.service-icon {
+    font-size: 1.5rem;
+    width: 30px;
+    text-align: center;
+}
+
+.service-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
         /* --- Stats Dashboard --- */
         .stats-grid {
             display: grid;
@@ -438,8 +480,10 @@ html {
     <h2 class="section-header">О нас</h2>
     <p>
         Classic Fitness Club — это современный спортивный клуб с 15-летним опытом работы. 
-        Мы предлагаем множество направлений: групповые занятия, танцы, фитнес, индивидуальные тренировки, 
-        а также специальные детские программы. Профессиональные тренеры и индивидуальный подход к каждому клиенту.
+        Посмотрите наши <a href="#stories-gym" class="about-link">тренировки в зале</a>, 
+        яркие <a href="#stories-dance" class="about-link">танцевальные классы</a> и 
+        успехи наших <a href="#stories-kids" class="about-link">юных атлетов</a>. 
+        Профессиональные тренеры и индивидуальный подход к каждому клиенту.
     </p>
 </section>
 
@@ -486,6 +530,31 @@ html {
     </div>
 </div>
 
+
+    <div class="container">
+    <div class="services-list" id="servicesList">
+        <div class="service-item">
+            <span class="service-icon">💪</span>
+            <span class="service-text">Тренажерный зал</span>
+        </div>
+        <div class="service-item">
+            <span class="service-icon">💃</span>
+            <span class="service-text">Стрип-пластика / Dance</span>
+        </div>
+        <div class="service-item">
+            <span class="service-icon">🧘</span>
+            <span class="service-text">Стретчинг и Йога</span>
+        </div>
+        <div class="service-item">
+            <span class="service-icon">🧒</span>
+            <span class="service-text">Детская гимнастика</span>
+        </div>
+        <div class="service-item">
+            <span class="service-icon">🥊</span>
+            <span class="service-text">Функциональный тренинг</span>
+        </div>
+    </div>
+</div>
     <!-- CTA блок -->
     <div class="container">
         <section class="cta-section">
@@ -625,6 +694,24 @@ container.addEventListener('touchend', e => {
         obs.observe(document.querySelector('.stats-grid'));
 
         updateCarousel();
+
+
+        const servicesObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const items = entry.target.querySelectorAll('.service-item');
+            items.forEach((item, index) => {
+                // Устанавливаем задержку для эффекта "лестницы"
+                setTimeout(() => {
+                    item.classList.add('show');
+                }, index * 150); 
+            });
+            servicesObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.2 });
+
+servicesObserver.observe(document.getElementById('servicesList'));
     </script>
 </body>
 </html>
