@@ -70,20 +70,6 @@ body::before {
 }
 
 
-.price-name {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.8;
-    flex: 1;
-    color: #FFD700; /* Жёлтый цвет */
-}
-        /* Цитата и кнопка под прайсом */
-.cta-footer-content {
-    padding: 0 20px 25px;
-    text-align: center;
-}
-
 .price-header {
     display: flex;
     justify-content: space-between;
@@ -91,10 +77,20 @@ body::before {
     margin-bottom: 12px;
 }
 
+.price-name {
+    font-size: 1.4rem; /* Одинаковый размер с ценой */
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    flex: 1;
+    color: #FFD700;
+}
+        /* Цитата и кнопка под прайсом */
 .price-value {
     font-size: 1.4rem;
     font-weight: 800;
-    color: #FFD700; /* Жёлтый цвет */
+    color: #FFD700;
     line-height: 1;
 }
 
@@ -103,7 +99,72 @@ body::before {
     opacity: 0.6;
     line-height: 1.4;
     margin-top: auto;
-    color: #FFD700; /* Жёлтый цвет */
+    color: #FFD700;
+}
+
+/* Цитата и кнопка под прайсом */
+.cta-footer-content {
+    padding: 0 20px 25px;
+    text-align: center;
+}
+
+        .cta-quote {
+    font-size: 1.1rem;
+    margin-bottom: 8px; /* Уменьшенный отступ */
+    opacity: 0.9;
+    line-height: 1.6;
+    font-style: italic;
+    position: relative;
+    padding: 15px 0;
+}
+
+.cta-quote::before {
+    content: '"';
+    font-size: 3rem;
+    color: #FFD700;
+    opacity: 0.3;
+    position: absolute;
+    left: -10px;
+    top: -10px;
+}
+
+.cta-quote::after {
+    content: '"';
+    font-size: 3rem;
+    color: #FFD700;
+    opacity: 0.3;
+    position: absolute;
+    right: -10px;
+    bottom: -25px;
+}
+
+.quote-author {
+    display: block;
+    font-size: 0.9rem;
+    color: #FFD700;
+    margin-top: 8px;
+    font-style: normal;
+    opacity: 0.8;
+}
+
+        .cta-button {
+    display: block;
+    width: 100%;
+    padding: 18px 20px;
+    background: #FFD700;
+    color: #1a1a1a;
+    font-size: 1.3rem; /* Увеличенный размер текста */
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
 }
 
 html {
@@ -156,7 +217,7 @@ html {
     width: 50vw;
     max-width: 200px;
     height: 260px;
-    border-radius: 20px; /* Увеличенное скругление */
+    border-radius: 20px;
     overflow: hidden;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
@@ -168,10 +229,11 @@ html {
     transform: translateX(0) scale(1.1) rotate(0deg);
     z-index: 10;
     opacity: 1;
-    border-radius: 20px; /* Увеличенное скругление для активной карточки */
+    border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
+
 
 .carousel-slide::after {
     content: '';
@@ -180,7 +242,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: 20px; /* Увеличенное скругление */
+    border-radius: 20px;
     pointer-events: none;
 }
 
@@ -329,8 +391,8 @@ html {
 }
 
 .service-item {
-    background: #FFD700; /* Желтый фон */
-    color: #1a1a1a;      /* Тёмно-серый цвет текста (как фон сайта) */
+    background: #FFD700;
+    color: #1a1a1a; /* Тёмно-серый как фон сайта */
     border-radius: 8px;
     padding: 18px 25px;
     display: flex;
@@ -341,6 +403,7 @@ html {
     transform: translateY(40px) rotateX(-20deg);
     transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
+
 
 .service-item.show {
     opacity: 1;
@@ -360,11 +423,13 @@ html {
     height: 100%;
     fill: #1a1a1a; /* Тёмно-серая иконка */
 }
-        .services-header {
+  .services-header {
     background: none;
-    color: #FFD700; /* Жёлтый цвет */
-    text-align: left;
-    padding-left: 0;
+    color: #FFD700;
+    text-align: center; /* По центру */
+    padding: 15px 20px;
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 
 .service-text {
@@ -423,31 +488,9 @@ html {
             padding: 20px;
         }
 
-   .cta-quote {
-    font-size: 1.1rem;
-    margin-bottom: 12px; /* Уменьшенный отступ */
-    opacity: 0.9;
-    line-height: 1.6;
-}
+ 
 
-      .cta-button {
-    display: block;
-    width: 100%;
-    padding: 18px 20px; /* Увеличенный padding */
-    background: #FFD700;
-    color: #1a1a1a;
-    font-size: 1.2rem; /* Увеличенный размер текста */
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-.cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
-}
+    
 
         /* --- Map & Contacts --- */
         .contacts-section-wrapper {
@@ -634,8 +677,8 @@ html {
 </div>
 
 
- <div class="container">
-    <h2 class="section-header services-header">Направления</h2>
+<div class="container">
+    <h2 class="section-header services-header">Направления которые у нас есть</h2>
     <div class="services-list" id="servicesList">
         <div class="service-item">
             <span class="service-icon">
@@ -713,9 +756,9 @@ html {
         <section class="contacts-section-wrapper">
             <h2 class="section-header">Контакты</h2>
             <div class="contacts-content">
-                <div class="map-box">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2000!2d30.5!3d50.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sua!4v1" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
+             <div class="map-box">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2718.9516842876844!2d31.98598447638859!3d46.96740103418744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c5d8c2e5c5c5c5%3A0x5c5c5c5c5c5c5c5!2z0JHQvtCz0L7Rj9Cy0LvQtdC90YHRjNC60LjQuSDQv9GA0L7RgdC_0LXQutGCLCAzMjYsINCc0LjQutC-0LvQsNGX0LIsINCc0LjQutC-0LvQsNGX0LLRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjCwgNTQwNTA!5e0!3m2!1sru!2sua!4v1234567890123!5m2!1sru!2sua" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
 
                 <div class="social-list">
                     <a href="#" class="social-item">
@@ -724,12 +767,12 @@ html {
                         </svg>
                         Instagram
                     </a>
-                    <a href="#" class="social-item">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.83-.27-1.49-.42-1.43-.88.03-.24.37-.48 1.02-.73 3.99-1.73 6.65-2.87 7.98-3.43 3.8-1.58 4.59-1.85 5.1-1.86.11 0 .37.03.53.17.14.12.18.28.19.41.01.1.02.33 0 .51z"/>
-                        </svg>
-                        Telegram
-                    </a>
+                  <a href="#" class="social-item">
+    <svg viewBox="0 0 24 24">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.03-1.227-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.14.122.099.156.232.171.332.014.099.031.394.017.607z"/>
+    </svg>
+    Telegram
+</a>
                     <a href="tel:+380000000000" class="social-item">
                         <svg viewBox="0 0 24 24">
                             <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
@@ -798,17 +841,17 @@ container.addEventListener('touchend', e => {
     }
 });
 
-        // Мотивирующие цитаты
-        const quotes = [
-            "Единственный способ сделать великую работу — это любить то, что вы делаете",
-            "Сильное тело — это основа для сильного духа",
-            "Не ждите идеального момента. Начните прямо сейчас",
-            "Ваше тело может выдержать почти всё. Это ваш разум, который нужно убедить",
-            "Успех — это сумма небольших усилий, повторяемых изо дня в день"
-        ];
-        
-        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-        document.getElementById('motivationQuote').textContent = `"${randomQuote}"`;
+      // Мотивирующие цитаты с авторами
+const quotes = [
+    { text: "Единственный способ сделать великую работу — это любить то, что вы делаете", author: "Стив Джобс" },
+    { text: "Сильное тело — это основа для сильного духа", author: "Аристотель" },
+    { text: "Не ждите идеального момента. Начните прямо сейчас", author: "Наполеон Хилл" },
+    { text: "Ваше тело может выдержать почти всё. Это ваш разум, который нужно убедить", author: "Неизвестен" },
+    { text: "Успех — это сумма небольших усилий, повторяемых изо дня в день", author: "Роберт Кольер" }
+];
+
+const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+document.getElementById('motivationQuote').innerHTML = `${randomQuote.text}<span class="quote-author">— ${randomQuote.author}</span>`;
 
         // Анимация счетчиков
         const obs = new IntersectionObserver((entries) => {
