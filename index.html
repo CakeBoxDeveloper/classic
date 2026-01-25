@@ -5,12 +5,12 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Classic Fitness Club</title>
     <style>
-        * { 
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+      * { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
 
 /* Основной фон с зернистым градиентом */
 body {
@@ -21,8 +21,6 @@ body {
     position: relative;
     width: 100%;
     max-width: 100vw;
-    
-    /* Графитовый фон со светло-серыми (стальными) акцентами */
     background-color: #1a1a1a;
     background-image: 
         radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.08), transparent 40%),
@@ -38,140 +36,11 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    /* baseFrequency='0.8' делает зерно очень мелким, а numOctaves='4' добавляет резкости */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    
-    /* Небольшое увеличение прозрачности, чтобы мелкое зерно было заметно */
     opacity: 0.07; 
-    
-    /* Режим наложения soft-light делает зерно более естественным */
     mix-blend-mode: soft-light;
-    
     pointer-events: none;
     z-index: -1;
-}
-
-        /* Сетка абонементов */
-.price-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    padding: 20px;
-}
-
-
-
-.price-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    min-height: 120px;
-}
-
-
-.price-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Изменено на center для выравнивания по одной линии */
-    margin-bottom: 12px;
-}
-
-.price-name {
-    font-size: 1.1rem; /* Уменьшенный размер */
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    opacity: 0.9;
-    flex: 1;
-    color: #FFD700;
-    line-height: 1; /* Одинаковая высота строки */
-}
-        /* Цитата и кнопка под прайсом */
-.price-value {
-    font-size: 1.1rem; /* Такой же размер как у названия */
-    font-weight: 800;
-    color: #FFD700;
-    line-height: 1; /* Одинаковая высота строки */
-    margin-left: 10px;
-}
-
-.price-period {
-    font-size: 0.75rem;
-    opacity: 0.6;
-    line-height: 1.4;
-    margin-top: auto;
-    color: #FFD700;
-}
-
-/* Цитата и кнопка под прайсом */
-.cta-footer-content {
-    padding: 0 20px 25px;
-    text-align: center;
-}
-
-
-  .cta-quote {
-    font-size: 1.05rem;
-    margin-bottom: 15px;
-    opacity: 0.9;
-    line-height: 1.6;
-    font-style: italic;
-    position: relative;
-    padding: 25px 15px 15px 15px; /* Увеличен верхний padding */
-}
-
-.cta-quote::before {
-    content: '"';
-    font-size: 3.5rem;
-    color: #FFD700; /* Жёлтый как заголовки */
-    opacity: 0.5;
-    position: absolute;
-    left: 5px;
-    top: -5px; /* Подняты вверх */
-    line-height: 1;
-}
-
-.cta-quote::after {
-    content: '"';
-    font-size: 3.5rem;
-    color: #FFD700; /* Жёлтый как заголовки */
-    opacity: 0.5;
-    position: absolute;
-    right: 5px;
-    bottom: -20px;
-    line-height: 1;
-}
-
-.quote-author {
-    display: block;
-    font-size: 0.9rem;
-    color: #FFD700;
-    margin-top: 10px;
-    font-style: normal;
-    opacity: 0.8;
-}
-
-      .cta-button {
-    display: block;
-    width: 100%;
-    padding: 18px 20px;
-    background: #FFD700;
-    color: #1a1a1a;
-    font-size: 1.2rem;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
 }
 
 html {
@@ -180,44 +49,44 @@ html {
     touch-action: pan-y pinch-zoom;
 }
 
-        /* Контейнер для всех блоков */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 0;
-        }
-        .about-section.container {
+/* Контейнер для всех блоков */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+.about-section.container {
     padding-top: 0;
 }
 
-        
-        /* --- Header --- */
-        header {
-            padding: 20px;
-            text-align: center;
-        }
+/* --- Header --- */
+header {
+    padding: 20px;
+    text-align: center;
+}
 
-        .logo-container img {
-            height: 60px;
-            width: auto;
-        }
+.logo-container img {
+    height: 60px;
+    width: auto;
+}
 
-        /* --- Carousel Section (3D эффект) --- */
-        .carousel-section {
-            padding: 40px 0;
-            overflow: hidden;
-        }
+/* --- Carousel Section (3D эффект) --- */
+.carousel-section {
+    padding: 40px 0;
+    overflow: hidden;
+}
 
-        .carousel-container {
-            position: relative;
-            height: 280px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            perspective: 1000px;
-        }
+.carousel-container {
+    position: relative;
+    height: 280px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+}
 
 .carousel-slide {
     position: absolute;
@@ -232,16 +101,6 @@ html {
     background: #000;
 }
 
-.carousel-slide[data-position="0"] {
-    transform: translateX(0) scale(1.1) rotate(0deg);
-    z-index: 10;
-    opacity: 1;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-
 .carousel-slide::after {
     content: '';
     position: absolute;
@@ -253,104 +112,81 @@ html {
     pointer-events: none;
 }
 
+.carousel-slide[data-position="0"] {
+    transform: translateX(0) scale(1.1) rotate(0deg);
+    z-index: 10;
+    opacity: 1;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
 .carousel-slide[data-position="1"] {
     transform: translateX(55%) scale(0.8) rotate(15deg);
     z-index: 5;
     opacity: 0.6;
+    filter: blur(8px);
 }
 
 .carousel-slide[data-position="-1"] {
     transform: translateX(-55%) scale(0.8) rotate(-15deg);
     z-index: 5;
     opacity: 0.6;
-}
-        
-
-.carousel-slide[data-position="0"] {
-    transform: translateX(0) scale(1.1);
-    z-index: 10;
-    opacity: 1;
-    border-radius: 5px;
-}
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: filter 0.4s ease;
-        }
-
-        /* Больше blur для неактивных карточек */
-    .carousel-slide[data-position="1"],
-.carousel-slide[data-position="-1"] {
     filter: blur(8px);
 }
 
-        .slide-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 15px;
-            z-index: 2;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
+.carousel-slide[data-position="hide"] {
+    opacity: 0;
+    transform: scale(0.5);
+    pointer-events: none;
+    z-index: 1;
+}
 
-        /* Показываем текст только на активной карточке */
-        .carousel-slide[data-position="0"] .slide-content {
-            opacity: 1;
-        }
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.4s ease;
+}
 
-        .trainer-name {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 3px;
-        }
+.slide-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
 
-        .trainer-skills {
-            font-size: 0.85rem;
-            opacity: 0.85;
-        }
+.carousel-slide[data-position="0"] .slide-content {
+    opacity: 1;
+}
 
-        /* Позиции слайдов для 3D эффекта */
-        .carousel-slide[data-position="0"] {
-            transform: translateX(0) scale(1.1);
-            z-index: 10;
-            opacity: 1;
-        }
+.trainer-name {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
 
-        .carousel-slide[data-position="1"] {
-            transform: translateX(55%) scale(0.8);
-            z-index: 5;
-            opacity: 0.6;
-        }
+.trainer-skills {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
 
-        .carousel-slide[data-position="-1"] {
-            transform: translateX(-55%) scale(0.8);
-            z-index: 5;
-            opacity: 0.6;
-        }
+/* --- Section Headers --- */
+.section-header {
+    background: #FFD700;
+    color: #2a2a2a;
+    padding: 15px 20px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    margin: 0;
+}
 
-        .carousel-slide[data-position="hide"] {
-            opacity: 0;
-            transform: scale(0.5);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* --- Section Headers --- */
-        .section-header {
-            background: #FFD700;
-            color: #2a2a2a;
-            padding: 15px 20px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            text-align: center;
-            border-radius: 5px 5px 0 0;
-            margin: 0;
-        }
-
-       .section-footer {
+.section-footer {
     background: #FFD700;
     color: #2a2a2a;
     padding: 15px 20px;
@@ -369,26 +205,76 @@ html {
     background: #ffed4e;
 }
 
-        /* --- About Section --- */
-        .about-section {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            overflow: hidden;
-        }
+/* --- About Section --- */
+.about-section {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
 
 .about-section p {
     font-size: 1rem;
     line-height: 1.7;
     opacity: 0.9;
-    padding: 20px 20px 20px 20px;
+    padding: 20px;
     margin: 0;
 }
-        .about-link {
+
+.about-link {
     color: #FFD700;
     text-decoration: none;
     font-weight: bold;
 }
+
+/* --- Stats Dashboard --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px 10px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-icon {
+    margin-bottom: 8px;
+}
+
+.stat-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #FFD700;
+    margin-bottom: 3px;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
 /* Стили для блока Направления */
+.services-header {
+    background: none;
+    color: #FFD700;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: visible;
+}
+
 .services-list {
     display: flex;
     flex-direction: column;
@@ -399,7 +285,7 @@ html {
 
 .service-item {
     background: #FFD700;
-    color: #1a1a1a; /* Тёмно-серый как фон сайта */
+    color: #1a1a1a;
     border-radius: 8px;
     padding: 18px 25px;
     display: flex;
@@ -410,7 +296,6 @@ html {
     transform: translateY(40px) rotateX(-20deg);
     transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
-
 
 .service-item.show {
     opacity: 1;
@@ -428,15 +313,7 @@ html {
 .service-icon svg {
     width: 100%;
     height: 100%;
-    fill: #1a1a1a; /* Тёмно-серая иконка */
-}
-  .services-header {
-    background: none;
-    color: #FFD700;
-    text-align: center; /* По центру */
-    padding: 15px 20px;
-    font-size: 1.3rem;
-    font-weight: 700;
+    fill: #1a1a1a;
 }
 
 .service-text {
@@ -444,114 +321,198 @@ html {
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: #1a1a1a; /* Тёмно-серый текст */
-}
-        /* --- Stats Dashboard --- */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px 10px;
-            border-radius: 5px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-   .stat-icon {
-    margin-bottom: 8px;
+    color: #1a1a1a;
 }
 
-.stat-icon svg {
-    width: 32px;
-    height: 32px;
+/* --- CTA Section --- */
+.cta-section {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: visible;
 }
 
-        .stat-number {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #FFD700;
-            margin-bottom: 3px;
-        }
+.cta-content {
+    text-align: center;
+    padding: 20px;
+}
 
-        .stat-label {
-            font-size: 0.8rem;
-            opacity: 0.7;
-        }
+/* Сетка абонементов */
+.price-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-        /* --- CTA Section --- */
-        .cta-section {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            overflow: hidden;
-        }
+.price-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+    box-sizing: border-box;
+}
 
-        .cta-content {
-            text-align: center;
-            padding: 20px;
-        }
+.price-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
 
- 
+.price-name {
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    opacity: 0.9;
+    flex: 1;
+    color: #FFD700;
+    line-height: 1;
+}
 
-    
+.price-value {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #FFD700;
+    line-height: 1;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
 
-        /* --- Map & Contacts --- */
-        .contacts-section-wrapper {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            overflow: hidden;
-        }
+.price-period {
+    font-size: 0.7rem;
+    opacity: 0.6;
+    line-height: 1.3;
+    margin-top: auto;
+    color: #FFD700;
+}
 
-        .contacts-content {
-            padding: 20px;
-        }
+/* Цитата и кнопка под прайсом */
+.cta-footer-content {
+    padding: 0 20px 25px;
+    text-align: center;
+}
 
-        .map-box {
-            width: 100%;
-            height: 300px;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
+.cta-quote {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    opacity: 0.9;
+    line-height: 1.5;
+    font-style: italic;
+    position: relative;
+    padding: 20px 10px 10px 10px;
+}
 
-        .social-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+.cta-quote::before {
+    content: '"';
+    font-size: 2.5rem;
+    color: #FFD700;
+    opacity: 0.5;
+    position: absolute;
+    left: 0;
+    top: -8px;
+    line-height: 1;
+}
 
-        .social-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 5px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+.cta-quote::after {
+    content: '"';
+    font-size: 2.5rem;
+    color: #FFD700;
+    opacity: 0.5;
+    position: absolute;
+    right: 0;
+    bottom: -15px;
+    line-height: 1;
+}
 
-        .social-item:hover {
-            background: rgba(255, 215, 0, 0.1);
-            border-color: rgba(255, 215, 0, 0.3);
-        }
+.quote-author {
+    display: block;
+    font-size: 0.8rem;
+    color: #FFD700;
+    margin-top: 8px;
+    font-style: normal;
+    opacity: 0.8;
+}
 
-        .social-item svg {
-            width: 24px;
-            height: 24px;
-            fill: #FFD700;
-            flex-shrink: 0;
-        }
+.cta-button {
+    display: block;
+    width: 100%;
+    padding: 15px 10px;
+    background: #FFD700;
+    color: #1a1a1a;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
 
-        /* Desktop */
-       /* Desktop */
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+}
+
+/* --- Map & Contacts --- */
+.contacts-section-wrapper {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.contacts-content {
+    padding: 20px;
+}
+
+.map-box {
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.social-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-item:hover {
+    background: rgba(255, 215, 0, 0.1);
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.social-item svg {
+    width: 24px;
+    height: 24px;
+    fill: #FFD700;
+    flex-shrink: 0;
+}
+
+/* Desktop */
 @media (min-width: 768px) {
     .container {
         max-width: 500px;
@@ -560,15 +521,48 @@ html {
     .carousel-container {
         height: 350px;
     }
+    
     .carousel-slide {
         max-width: 240px;
         height: 320px;
     }
+    
     .carousel-slide[data-position="1"] {
         transform: translateX(200px) scale(0.85) rotate(15deg);
     }
+    
     .carousel-slide[data-position="-1"] {
         transform: translateX(-200px) scale(0.85) rotate(-15deg);
+    }
+}
+
+/* Адаптивность для маленьких экранов */
+@media (max-width: 400px) {
+    .services-header {
+        font-size: 0.95rem;
+    }
+    
+    .cta-button {
+        font-size: 0.85rem;
+        padding: 12px 8px;
+    }
+    
+    .price-name {
+        font-size: 0.8rem;
+    }
+    
+    .price-value {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .services-header {
+        font-size: 0.85rem;
+    }
+    
+    .cta-button {
+        font-size: 0.75rem;
     }
 }
     </style>
