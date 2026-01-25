@@ -23,6 +23,49 @@ body {
     max-width: 100vw;
 }
 
+        /* Сетка абонементов */
+.price-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 20px;
+}
+
+.price-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px 10px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid rgba(255, 215, 0, 0.3); /* Легкое золотистое свечение */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.price-name {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+        /* Цитата и кнопка под прайсом */
+.cta-footer-content {
+    padding: 0 20px 25px;
+    text-align: center;
+}
+
+.price-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #FFD700;
+}
+
+.price-period {
+    font-size: 0.7rem;
+    opacity: 0.5;
+}
+
 html {
     overflow-x: hidden;
     width: 100%;
@@ -574,16 +617,39 @@ html {
 
 
     
-    <!-- CTA блок -->
-    <div class="container">
-        <section class="cta-section">
-            <h2 class="section-header">Зачем это мне?</h2>
-            <div class="cta-content">
-                <p class="cta-quote" id="motivationQuote"></p>
+<div class="container">
+    <section class="cta-section">
+        <h2 class="section-header">Наши цены</h2>
+        
+        <div class="price-grid">
+            <div class="price-card">
+                <span class="price-name">Базовый</span>
+                <span class="price-value">1200</span>
+                <span class="price-period">8 занятий / мес</span>
             </div>
-            <a href="#" class="section-footer">Записаться на тренировку</a>
-        </section>
-    </div>
+            <div class="price-card">
+                <span class="price-name">Безлимит</span>
+                <span class="price-value">1800</span>
+                <span class="price-period">полный доступ</span>
+            </div>
+            <div class="price-card">
+                <span class="price-name">Персональный</span>
+                <span class="price-value">3500</span>
+                <span class="price-period">10 занятий с тренером</span>
+            </div>
+            <div class="price-card">
+                <span class="price-name">Детский</span>
+                <span class="price-value">1000</span>
+                <span class="price-period">групповые секции</span>
+            </div>
+        </div>
+
+        <div class="cta-footer-content">
+            <p class="cta-quote" id="motivationQuote" style="font-style: italic; min-height: 3em;"></p>
+            <a href="#" class="cta-button">Записаться на тренировку</a>
+        </div>
+    </section>
+</div>
 
     <!-- Контакты -->
     <div class="container">
