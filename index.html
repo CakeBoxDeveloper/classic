@@ -265,14 +265,15 @@ header {
 
 /* Стилі для блоку Напрямки */
 .services-header {
-    background: none;
-    color: #FFD700;
+    background: #FFD700;
+    color: #2a2a2a;
     text-align: center;
-    padding: 15px 10px;
-    font-size: 1.1rem;
+    padding: 15px 20px;
+    font-size: 1.3rem;
     font-weight: 700;
-    white-space: nowrap;
-    overflow: visible;
+    text-transform: uppercase;
+    border-radius: 5px 5px 0 0;
+    margin: 0;
 }
 
 .services-list {
@@ -317,11 +318,18 @@ header {
 }
 
 .service-text {
-    font-size: 1.15rem;
+    font-size: 1rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     color: #1a1a1a;
+    white-space: nowrap;
+}
+     @media (max-width: 400px) {
+    .service-text {
+        font-size: 0.85rem;
+        letter-spacing: 0.2px;
+    }
 }
 
 /* --- CTA Section --- */
@@ -476,22 +484,25 @@ header {
 
 .social-list {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
 }
 
 .social-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
-    padding: 15px 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 5px;
+    gap: 0;
+    padding: 0;
+    background: none;
+    border-radius: 0;
     text-decoration: none;
-    color: #fff;
-    font-weight: 500;
+    color: transparent;
+    font-size: 0;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: none;
 }
 
 .social-item:hover {
@@ -500,10 +511,18 @@ header {
 }
 
 .social-item svg {
-    width: 24px;
-    height: 24px;
-    fill: #FFD700;
+    width: 40px;
+    height: 40px;
+    fill: none;
+    stroke: #FFD700;
+    stroke-width: 1.5;
     flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.social-item:hover svg {
+    stroke: #ffed4e;
+    transform: scale(1.1);
 }
 
 /* Desktop */
@@ -700,7 +719,7 @@ header {
 
 
 <div class="container">
-    <h2 class="section-header services-header">Наші тренувальні напрямки</h2>
+   <h2 class="section-header">Наші тренувальні напрямки</h2>
     <div class="services-list" id="servicesList">
         <div class="service-item">
             <span class="service-icon">
