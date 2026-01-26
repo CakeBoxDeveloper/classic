@@ -237,14 +237,15 @@ header {
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 12px;
     position: relative;
-    padding: 60px 10px;
+    padding: 40px 10px;
+    margin-bottom: 20px;
 }
 
 .stat-card {
     background: transparent;
-    padding: 25px 10px;
+    padding: 15px 8px;
     border-radius: 8px;
     text-align: center;
     border: 4px dashed #FFD700;
@@ -253,6 +254,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transform: scale(0.7);
 }
 
 /* Центральний блок */
@@ -260,15 +262,14 @@ header {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.7);
     background: #1a1a1a;
     border: 4px dashed #FFD700;
-    padding: 20px 30px;
+    padding: 20px;
     z-index: 10;
     box-shadow: none;
+    aspect-ratio: 1 / 1;
     width: auto;
-    min-width: 150px;
-    aspect-ratio: auto;
 }
 
 .center-card .stat-icon svg {
@@ -304,6 +305,7 @@ header {
     margin-bottom: 5px;
     line-height: 1;
 }
+
 .stat-label {
     font-size: 0.85rem;
     color: #FFD700;
@@ -327,9 +329,10 @@ header {
 .services-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 0;
     perspective: 1000px;
     margin-top: 20px;
+    position: relative;
 }
 
 .service-item {
@@ -340,15 +343,64 @@ header {
     display: flex;
     align-items: center;
     gap: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     opacity: 0;
-    transform: translateY(40px) rotateX(-20deg);
-    transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateY(40px) rotateX(-8deg);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    margin-bottom: -8px;
 }
 
 .service-item.show {
     opacity: 1;
-    transform: translateY(0) rotateX(0);
+    transform: translateY(0) rotateX(-8deg);
+}
+
+     .service-item:nth-child(1) { z-index: 9; }
+.service-item:nth-child(2) { z-index: 8; }
+.service-item:nth-child(3) { z-index: 7; }
+.service-item:nth-child(4) { z-index: 6; }
+.service-item:nth-child(5) { z-index: 5; }
+.service-item:nth-child(6) { z-index: 4; }
+.service-item:nth-child(7) { z-index: 3; }
+.service-item:nth-child(8) { z-index: 2; }
+.service-item:nth-child(9) { z-index: 1; }
+
+.service-item.active {
+    transform: translateY(0) rotateX(0deg) !important;
+    z-index: 10 !important;
+    margin-bottom: 0;
+}
+
+.service-item.shifted {
+    transform: translateY(100px) rotateX(-8deg) !important;
+}
+
+.service-description {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    padding: 0 25px;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 0 0 8px 8px;
+    margin-top: -8px;
+}
+
+.service-description.show {
+    max-height: 200px;
+    opacity: 1;
+    padding: 15px 25px;
+    margin-bottom: 12px;
+}
+
+.service-description p {
+    color: #FFD700;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
 }
 
 .service-icon {
@@ -900,24 +952,25 @@ header {
     const container = document.getElementById('carousel');
     const slides = Array.from(document.querySelectorAll('.carousel-slide'));
     let activeIndex = 0;
-function updateCarousel() {
-slides.forEach((slide, i) => {
-let diff = i - activeIndex;
-    // Зациклення
-    if (diff > slides.length / 2) diff -= slides.length;
-    if (diff < -slides.length / 2) diff += slides.length;
 
-    if (diff === 0) {
-        slide.setAttribute('data-position', '0');
-    } else if (diff === 1) {
-        slide.setAttribute('data-position', '1');
-    } else if (diff === -1) {
-        slide.setAttribute('data-position', '-1');
-    } else {
-        slide.setAttribute('data-position', 'hide');
+    function updateCarousel() {
+        slides.forEach((slide, i) => {
+            let diff = i - activeIndex;
+            if (diff > slides.length / 2) diff -= slides.length;
+            if (diff < -slides.length / 2) diff += slides.length;
+
+            if (diff === 0) {
+                slide.setAttribute('data-position', '0');
+            } else if (diff === 1) {
+                slide.setAttribute('data-position', '1');
+            } else if (diff === -1) {
+                slide.setAttribute('data-position', '-1');
+            } else {
+                slide.setAttribute('data-position', 'hide');
+            }
+        });
     }
-});
-}
+
     slides.forEach((slide, i) => {
         slide.addEventListener('click', () => {
             activeIndex = i;
@@ -925,62 +978,73 @@ let diff = i - activeIndex;
         });
     });
 
- let touchStart = 0;
-let touchStartTime = 0;
-container.addEventListener('touchstart', e => {
-touchStart = e.touches[0].clientX;
-touchStartTime = Date.now();
-});
-container.addEventListener('touchend', e => {
-let touchEnd = e.changedTouches[0].clientX;
-let touchDuration = Date.now() - touchStartTime;
-let swipeDistance = touchStart - touchEnd;
-// Свайп вліво - картка йде вліво
-if (swipeDistance > 50 && touchDuration < 500) {
-    activeIndex = (activeIndex + 1) % slides.length;
-    updateCarousel();
-} 
-// Свайп вправо - картка приходить справа
-else if (swipeDistance < -50 && touchDuration < 500) {
-    activeIndex = (activeIndex - 1 + slides.length) % slides.length;
-    updateCarousel();
-}
-});
-// Мотивуючі цитати українською
-const quotes = [
-{ text: "Немає нічого смачнішого за капусту, обожнюю капусту", author: "Кейт Мосс" },
-{ text: "Я не ледачий, я просто в режимі енергозбереження", author: "Ілон Маск" },
-{ text: "Тренуйся ніби за тобою женуться, але насправді ніхто не женеться", author: "Брюс Лі" },
-{ text: "Прес робиться на кухні, але я віддаю перевагу піці", author: "Арнольд Шварценеггер" },
-{ text: "Єдина вправа яку я роблю регулярно — це біг до холодильника", author: "Стів Джобс" },
-{ text: "Біль тимчасовий, піца назавжди", author: "Майк Тайсон" },
-{ text: "Я не кидаю тренування, я просто відкладаю їх на завтра вже 5 років", author: "Дуейн Джонсон" },
-{ text: "Мотивація — це коли холодильник закривається сам", author: "Опра Вінфрі" },
-{ text: "Найкращий час для тренування був вчора, другий найкращий — післязавтра", author: "Конфуцій" },
-{ text: "Я качаюся розумово, це теж рахується", author: "Бред Пітт" },
-{ text: "Мій фітнес-браслет думає що я помер", author: "Марк Цукерберг" },
-{ text: "Я лише один раз у житті відмовився від алкоголю. Коли не дочув питання.", author: "Конор Макгрегор" },
-{ text: "Єдиний марафон який я пройшов — це серіали на Netflix", author: "Усейн Болт" }
-];
-const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-document.getElementById('motivationQuote').innerHTML = `${randomQuote.text}<span class="quote-author">— ${randomQuote.author}</span>`;
+    let touchStart = 0;
+    let touchStartTime = 0;
+    container.addEventListener('touchstart', e => {
+        touchStart = e.touches[0].clientX;
+        touchStartTime = Date.now();
+    });
+    
+    container.addEventListener('touchend', e => {
+        let touchEnd = e.changedTouches[0].clientX;
+        let touchDuration = Date.now() - touchStartTime;
+        let swipeDistance = touchStart - touchEnd;
+        
+        if (swipeDistance > 50 && touchDuration < 500) {
+            activeIndex = (activeIndex + 1) % slides.length;
+            updateCarousel();
+        } else if (swipeDistance < -50 && touchDuration < 500) {
+            activeIndex = (activeIndex - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
+    });
+
+    // Мотивуючі цитати
+    const quotes = [
+        { text: "Немає нічого смачнішого за капусту, обожнюю капусту", author: "Кейт Мосс" },
+        { text: "Я не ледачий, я просто в режимі енергозбереження", author: "Ілон Маск" },
+        { text: "Тренуйся ніби за тобою женуться, але насправді ніхто не женеться", author: "Брюс Лі" },
+        { text: "Прес робиться на кухні, але я віддаю перевагу піці", author: "Арнольд Шварценеггер" },
+        { text: "Єдина вправа яку я роблю регулярно — це біг до холодильника", author: "Стів Джобс" },
+        { text: "Біль тимчасовий, піца назавжди", author: "Майк Тайсон" },
+        { text: "Я не кидаю тренування, я просто відкладаю їх на завтра вже 5 років", author: "Дуейн Джонсон" },
+        { text: "Мотивація — це коли холодильник закривається сам", author: "Опра Вінфрі" },
+        { text: "Найкращий час для тренування був вчора, другий найкращий — післязавтра", author: "Конфуцій" },
+        { text: "Я качаюся розумово, це теж рахується", author: "Бред Пітт" },
+        { text: "Мій фітнес-браслет думає що я помер", author: "Марк Цукерберг" },
+        { text: "Я лише один раз у житті відмовився від алкоголю. Коли не дочув питання.", author: "Конор Макгрегор" },
+        { text: "Єдиний марафон який я пройшов — це серіали на Netflix", author: "Усейн Болт" }
+    ];
+
+    function showRandomQuote() {
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        document.getElementById('motivationQuote').innerHTML = `${randomQuote.text}<span class="quote-author">— ${randomQuote.author}</span>`;
+    }
+
+    showRandomQuote();
+    
+    // Клік на цитату для зміни
+    document.getElementById('motivationQuote').addEventListener('click', showRandomQuote);
+
     // Анімація лічильників
     const obs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.querySelectorAll('.stat-number').forEach(num => {
                     const target = +num.dataset.target;
-                    let count = 0;
-                    const inc = target / 60;
-                    const timer = setInterval(() => {
-                        count += inc;
-                        if (count >= target) {
-                            num.innerText = target;
-                            clearInterval(timer);
-                        } else {
-                            num.innerText = Math.floor(count);
-                        }
-                    }, 25);
+                    if (target) {
+                        let count = 0;
+                        const inc = target / 60;
+                        const timer = setInterval(() => {
+                            count += inc;
+                            if (count >= target) {
+                                num.innerText = target;
+                                clearInterval(timer);
+                            } else {
+                                num.innerText = Math.floor(count);
+                            }
+                        }, 25);
+                    }
                 });
                 obs.unobserve(entry.target);
             }
@@ -991,22 +1055,72 @@ document.getElementById('motivationQuote').innerHTML = `${randomQuote.text}<span
 
     updateCarousel();
 
-
+    // Анімація появи напрямків
     const servicesObserver = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-    if (entry.isIntersecting) {
-        const items = entry.target.querySelectorAll('.service-item');
-        items.forEach((item, index) => {
-            // Встановлюємо затримку для ефекту "драбини"
-            setTimeout(() => {
-                item.classList.add('show');
-            }, index * 150); 
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const items = entry.target.querySelectorAll('.service-item');
+                items.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('show');
+                    }, index * 150);
+                });
+                servicesObserver.unobserve(entry.target);
+            }
         });
-        servicesObserver.unobserve(entry.target);
-    }
-});
-}, { threshold: 0.2 });
-servicesObserver.observe(document.getElementById('servicesList'));
+    }, { threshold: 0.2 });
+    
+    servicesObserver.observe(document.getElementById('servicesList'));
+
+    // Клік на напрямки
+    const serviceItems = document.querySelectorAll('.service-item');
+    const descriptions = {
+        0: "Сучасне обладнання для силових тренувань та кардіо. Професійні тренери допоможуть скласти індивідуальну програму.",
+        1: "Персональний підхід до кожного клієнта. Досвідчені тренери розроблять програму під ваші цілі.",
+        2: "Групи для дітей різного віку. Розвиток координації, сили та витривалості в ігровій формі.",
+        3: "Художня та спортивна гімнастика для дітей. Розвиток гнучкості та координації.",
+        4: "Зміцнення м'язів, покращення постави та гнучкості. Підходить для всіх рівнів підготовки.",
+        5: "Розтяжка для покращення гнучкості та зняття м'язового напруження.",
+        6: "Танцювальний напрямок для розвитку пластики та впевненості в собі.",
+        7: "Кардіо-тренування на степ-платформах. Спалювання калорій та зміцнення м'язів ніг.",
+        8: "Традиційні східні танці. Розвиток пластики, грації та жіночності."
+    };
+
+    serviceItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Прибираємо active з усіх
+            serviceItems.forEach(el => {
+                el.classList.remove('active', 'shifted');
+                const desc = el.nextElementSibling;
+                if (desc && desc.classList.contains('service-description')) {
+                    desc.remove();
+                }
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+                
+                // Зсуваємо елементи нижче
+                serviceItems.forEach((el, i) => {
+                    if (i > index) {
+                        el.classList.add('shifted');
+                    }
+                });
+
+                // Додаємо опис
+                const desc = document.createElement('div');
+                desc.className = 'service-description';
+                desc.innerHTML = `<p>${descriptions[index]}</p>`;
+                item.after(desc);
+                
+                setTimeout(() => {
+                    desc.classList.add('show');
+                }, 10);
+            }
+        });
+    });
 </script>
 </body>
 </html>
