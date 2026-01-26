@@ -49,11 +49,11 @@ html {
     touch-action: pan-y pinch-zoom;
 }
      .slogan {
-    font-size: 0.9rem;
-    color: #FFD700;
-    margin-top: 10px;
-    font-style: italic;
-    opacity: 0.9;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-top: 15px;
+    font-style: normal;
+    opacity: 1;
 }
 
 /* Контейнер для всіх блоків */
@@ -593,7 +593,7 @@ header {
  <header>
     <div class="logo-container">
         <img src="https://raw.githubusercontent.com/CakeBoxDeveloper/classic/main/ClassicLogo.png" alt="Classic Logo">
-        <p class="slogan">Можна купити органи, але не тіло</p>
+        <p class="slogan">"Можна купити органи, але не тіло"</p>
     </div>
 </header>
 
@@ -833,10 +833,11 @@ header {
          <div class="map-box">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2718.9516842876844!2d31.98598447638859!3d46.96740103418744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c5d8c2e5c5c5c5%3A0x5c5c5c5c5c5c5c5!2z0JHQvtCz0L7Rj9Cy0LvQtdC90YHRjNC60LjQuSDQv9GA0L7RgdC_0LXQutGCLCAzMjYsINCc0LjQutC-0LvQsNGX0LIsINCc0LjQutC-0LvQsNGX0LLRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjCwgNTQwNTA!5e0!3m2!1sru!2sua!4v1234567890123!5m2!1sru!2sua" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
-        <div class="social-list">
+         
+    <div class="social-list">
     <a href="https://www.instagram.com/classic_fitness_club/" class="social-item">Instagram</a>
-    <a href="#" class="social-item">Telegram</a>
     <a href="viber://chat?number=+380000000000" class="social-item">Viber</a>
+    <a href="#" class="social-item">Telegram</a>
 </div>
         </section>
     </div>
@@ -894,15 +895,16 @@ else if (swipeDistance < -50 && touchDuration < 500) {
 const quotes = [
 { text: "Немає нічого смачнішого за капусту, обожнюю капусту", author: "Кейт Мосс" },
 { text: "Я не ледачий, я просто в режимі енергозбереження", author: "Ілон Маск" },
-{ text: "Тренуйся ніби за тобою женуться, але насправді ніхто не жене", author: "Брюс Лі" },
+{ text: "Тренуйся ніби за тобою женуться, але насправді ніхто не женеться", author: "Брюс Лі" },
 { text: "Прес робиться на кухні, але я віддаю перевагу піці", author: "Арнольд Шварценеггер" },
 { text: "Єдина вправа яку я роблю регулярно — це біг до холодильника", author: "Стів Джобс" },
 { text: "Біль тимчасовий, піца назавжди", author: "Майк Тайсон" },
 { text: "Я не кидаю тренування, я просто відкладаю їх на завтра вже 5 років", author: "Дуейн Джонсон" },
 { text: "Мотивація — це коли холодильник закривається сам", author: "Опра Вінфрі" },
 { text: "Найкращий час для тренування був вчора, другий найкращий — післязавтра", author: "Конфуцій" },
-{ text: "Я качаюся розумово, це теж вважається", author: "Бред Пітт" },
+{ text: "Я качаюся розумово, це теж рахується", author: "Бред Пітт" },
 { text: "Мій фітнес-браслет думає що я помер", author: "Марк Цукерберг" },
+{ text: "Я лише один раз у житті відмовився від алкоголю. Коли не дочув питання.", author: "Конор Макгрегор" },
 { text: "Єдиний марафон який я пройшов — це серіали на Netflix", author: "Усейн Болт" }
 ];
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
