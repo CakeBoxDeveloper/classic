@@ -291,7 +291,7 @@ header {
     background: none;
     color: #FFD700;
     text-align: center;
-    padding: 15px 0;
+    padding: 0 0 15px 0;
     font-size: 1.3rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -323,6 +323,7 @@ header {
     cursor: pointer;
     position: relative;
     margin-bottom: -18px;
+    z-index: 1;
 }
 
 .service-item.show {
@@ -341,7 +342,7 @@ header {
 .service-item:nth-child(9) { z-index: 9; }
 
 .service-item.active {
-    transform: translateY(0) rotateX(0deg) !important;
+    transform: translateY(0) rotateX(0deg) scale(1.1) !important;
     z-index: 20 !important;
     margin-bottom: 0 !important;
 }
@@ -1076,20 +1077,20 @@ header {
                 item.after(desc);
                 
                 setTimeout(() => {
-                    desc.classList.add('show');
-                    // Чекаємо поки анімація завершиться
-                    setTimeout(() => {
-                        const descHeight = desc.offsetHeight;
-                        
-                        // Зсуваємо елементи нижче
-                        serviceItems.forEach((el, i) => {
-                            if (i > index) {
-                                el.classList.add('shifted');
-                                el.style.transform = `translateY(${descHeight}px) rotateX(-25deg)`;
-                            }
-                        });
-                    }, 50);
-                }, 10);
+    desc.classList.add('show');
+    // Чекаємо поки анімація завершиться
+    setTimeout(() => {
+        const descHeight = desc.offsetHeight;
+        
+        // Зсуваємо елементи нижче
+        serviceItems.forEach((el, i) => {
+            if (i > index) {
+                el.classList.add('shifted');
+                el.style.transform = `translateY(${descHeight - 18}px) rotateX(-25deg)`;
+            }
+        });
+    }, 50);
+}, 10);
             }
         });
     });
