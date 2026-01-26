@@ -247,7 +247,7 @@ header {
     padding: 20px 10px;
     border-radius: 8px;
     text-align: center;
-    border: 2px dashed #FFD700; /* Пунктирна жовта лінія */
+    border: 4px dashed #FFD700; /* Товща лінія */
 }
 
 /* Центральний блок */
@@ -256,8 +256,8 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #FFD700;
-    border: 2px dashed #FFD700;
+    background: #1a1a1a; /* Сірий фон як у body */
+    border: 4px solid #FFD700; /* Суцільна товста лінія */
     padding: 15px 25px;
     z-index: 10;
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
@@ -626,7 +626,7 @@ header {
  <header>
     <div class="logo-container">
         <img src="https://raw.githubusercontent.com/CakeBoxDeveloper/classic/main/ClassicLogo.png" alt="Classic Logo">
-        <p class="slogan">"Можна купити органи, але не тіло"</p>
+        <p class="slogan">«Простір, у якому добре»</p>
     </div>
 </header>
 
@@ -757,20 +757,20 @@ header {
             <span class="stat-number" data-target="12">0</span>
             <span class="stat-label">Напрямків</span>
         </div>
-    </div>
-
- <div class="stat-card center-card">
-        <div class="stat-icon">
-            <svg viewBox="0 0 24 24" fill="#1a1a1a">
-                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-            </svg>
+   </div>
+        
+        <!-- Центральний блок ВСЕРЕДИНІ stats-grid -->
+        <div class="stat-card center-card">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="#1a1a1a">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                </svg>
+            </div>
+            <span class="stat-number">33</span>
+            <span class="stat-label">квадратних метра</span>
         </div>
-        <span class="stat-number">33</span>
-        <span class="stat-label">квадратних метра</span>
-    </div>
- </div>
- 
-</div>
+    </div> <!-- Закриття stats-grid -->
+ </div> <!-- Закриття container -->
 
 
 <div class="container">
