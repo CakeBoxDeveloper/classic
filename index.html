@@ -342,7 +342,7 @@ header {
 .service-item:nth-child(9) { z-index: 9; }
 
 .service-item.active {
-    transform: translateY(0) rotateX(0deg) scale(1.1) !important;
+    transform: translateY(0) rotateX(0deg) scale(1.05) !important;
     z-index: 20 !important;
     margin-bottom: 0 !important;
 }
@@ -1086,7 +1086,8 @@ header {
         serviceItems.forEach((el, i) => {
             if (i > index) {
                 el.classList.add('shifted');
-                el.style.transform = `translateY(${descHeight - 18}px) rotateX(-25deg)`;
+                el.style.transform = `translateY(${descHeight}px) rotateX(-25deg)`;
+                el.style.marginBottom = '-18px';
             }
         });
     }, 50);
