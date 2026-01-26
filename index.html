@@ -886,7 +886,7 @@ const quotes = [
 { text: "Єдиний марафон який я пройшов — це серіали на Netflix", author: "Усейн Болт" }
 ];
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-document.getElementById('motivationQuote').innerHTML = ${randomQuote.text}<span class="quote-author">— ${randomQuote.author}</span>;
+document.getElementById('motivationQuote').innerHTML = `${randomQuote.text}<span class="quote-author">— ${randomQuote.author}</span>`;
     // Анімація лічильників
     const obs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
