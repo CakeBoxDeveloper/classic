@@ -48,6 +48,13 @@ html {
     width: 100%;
     touch-action: pan-y pinch-zoom;
 }
+     .slogan {
+    font-size: 0.9rem;
+    color: #FFD700;
+    margin-top: 10px;
+    font-style: italic;
+    opacity: 0.9;
+}
 
 /* Контейнер для всіх блоків */
 .container {
@@ -486,28 +493,29 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 30px;
+    gap: 15px;
     align-items: center;
 }
 
 .social-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    padding: 0;
-    background: none;
-    border-radius: 0;
+    flex: 1;
+    max-width: 150px;
+    padding: 12px 20px;
+    background: #FFD700;
+    color: #555;
+    text-align: center;
     text-decoration: none;
-    color: transparent;
-    font-size: 0;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
     border: none;
 }
 
 .social-item:hover {
-    background: rgba(255, 215, 0, 0.1);
-    border-color: rgba(255, 215, 0, 0.3);
+    background: #ffed4e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
 }
 
 .social-item svg {
@@ -582,11 +590,12 @@ header {
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="https://raw.githubusercontent.com/CakeBoxDeveloper/classic/main/ClassicLogo.png" alt="Classic Logo">
-        </div>
-    </header>
+ <header>
+    <div class="logo-container">
+        <img src="https://raw.githubusercontent.com/CakeBoxDeveloper/classic/main/ClassicLogo.png" alt="Classic Logo">
+        <p class="slogan">Можна купити органи, але не тіло</p>
+    </div>
+</header>
 
     <!-- Карусель тренерів (3D) -->
     <section class="carousel-section">
@@ -719,7 +728,7 @@ header {
 
 
 <div class="container">
-   <h2 class="section-header">НАШI ТРЕНУВАЛЬНI НАПРЯМКИ</h2>
+  <h2 class="services-header">НАШI ТРЕНУВАЛЬНI НАПРЯМКИ</h2>
     <div class="services-list" id="servicesList">
         <div class="service-item">
             <span class="service-icon">
@@ -824,28 +833,11 @@ header {
          <div class="map-box">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2718.9516842876844!2d31.98598447638859!3d46.96740103418744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c5d8c2e5c5c5c5%3A0x5c5c5c5c5c5c5c5!2z0JHQvtCz0L7Rj9Cy0LvQtdC90YHRjNC60LjQuSDQv9GA0L7RgdC_0LXQutGCLCAzMjYsINCc0LjQutC-0LvQsNGX0LIsINCc0LjQutC-0LvQsNGX0LLRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjCwgNTQwNTA!5e0!3m2!1sru!2sua!4v1234567890123!5m2!1sru!2sua" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
-           <div class="social-list">
-    <a href="#" class="social-item">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="2" width="20" height="20" rx="5" stroke="#FFD700" stroke-width="1.5"/>
-            <circle cx="12" cy="12" r="4" stroke="#FFD700" stroke-width="1.5"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="#FFD700"/>
-        </svg>
-    </a>
-    <a href="#" class="social-item">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FFD700" stroke-width="1.5"/>
-            <path d="M8.5 12.5L11 15L15.5 9.5" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16 11L12 13L8 11V9L12 7L16 9V11Z" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </a>
-    <a href="tel:+380000000000" class="social-item">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21 15.92V18.92C21 19.47 20.55 19.92 20 19.92C10.61 19.92 3 12.31 3 2.92C3 2.37 3.45 1.92 4 1.92H7C7.55 1.92 8 2.37 8 2.92C8 4.02 8.17 5.08 8.49 6.08C8.6 6.4 8.5 6.75 8.26 6.99L6.21 9.04C7.76 12.06 10.86 15.16 13.88 16.71L15.93 14.66C16.17 14.42 16.52 14.32 16.84 14.43C17.84 14.75 18.9 14.92 20 14.92C20.55 14.92 21 15.37 21 15.92Z" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </a>
+        <div class="social-list">
+    <a href="https://www.instagram.com/classic_fitness_club/" class="social-item">Instagram</a>
+    <a href="#" class="social-item">Telegram</a>
+    <a href="viber://chat?number=+380000000000" class="social-item">Viber</a>
 </div>
-            </div>
         </section>
     </div>
 <script>
