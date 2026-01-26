@@ -237,15 +237,48 @@ header {
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 15px;
+    position: relative;
+    padding: 60px 10px; /* Додаємо відступи для центрального блоку */
 }
 
 .stat-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 15px 10px;
-    border-radius: 5px;
+    background: transparent;
+    padding: 20px 10px;
+    border-radius: 8px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 2px dashed #FFD700; /* Пунктирна жовта лінія */
+}
+
+/* Центральний блок */
+.stat-card.center-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFD700;
+    border: 2px dashed #FFD700;
+    padding: 15px 25px;
+    z-index: 10;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    width: auto;
+    min-width: 140px;
+}
+
+.center-card .stat-icon svg {
+    fill: #1a1a1a;
+}
+
+.center-card .stat-number {
+    color: #1a1a1a;
+    font-size: 1.4rem;
+}
+
+.center-card .stat-label {
+    color: #1a1a1a;
+    opacity: 1;
+    font-weight: 600;
+    font-size: 0.75rem;
 }
 
 .stat-icon {
@@ -714,6 +747,7 @@ header {
             <span class="stat-number" data-target="6">0</span>
             <span class="stat-label">Дитячих груп</span>
         </div>
+     
         <div class="stat-card">
             <div class="stat-icon">
                 <svg viewBox="0 0 24 24" fill="#FFD700">
@@ -724,6 +758,18 @@ header {
             <span class="stat-label">Напрямків</span>
         </div>
     </div>
+
+ <div class="stat-card center-card">
+        <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="#1a1a1a">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+            </svg>
+        </div>
+        <span class="stat-number">33</span>
+        <span class="stat-label">квадратних метра</span>
+    </div>
+ </div>
+ 
 </div>
 
 
