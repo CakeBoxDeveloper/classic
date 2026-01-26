@@ -368,8 +368,8 @@ header {
 .service-description.show {
     max-height: 200px;
     opacity: 1;
-    padding: 15px 25px;
-    margin: -18px 0 -18px 0;
+    padding: 20px 25px;
+    margin: 0 0 -18px 0;
 }
 
 .service-description p {
@@ -1053,7 +1053,7 @@ header {
         8: "Традиційні східні танці. Розвиток пластики, грації та жіночності."
     };
 
-   serviceItems.forEach((item, index) => {
+  serviceItems.forEach((item, index) => {
     item.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
         
@@ -1061,7 +1061,6 @@ header {
         serviceItems.forEach(el => {
             el.classList.remove('active', 'shifted');
             el.style.transform = '';
-            el.style.marginBottom = '';
             const desc = el.nextElementSibling;
             if (desc && desc.classList.contains('service-description')) {
                 desc.remove();
@@ -1087,7 +1086,7 @@ header {
                     serviceItems.forEach((el, i) => {
                         if (i > index) {
                             el.classList.add('shifted');
-                            el.style.transform = `translateY(${descHeight - 36}px) rotateX(-25deg)`;
+                            el.style.transform = `translateY(${descHeight - 18}px) rotateX(-25deg)`;
                         }
                     });
                 }, 50);
