@@ -257,12 +257,13 @@ header {
 }
 
 
+
 /* Центральний блок */
 .stat-card.center-card {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.67);
     background: #1a1a1a;
     border: 4px dashed #FFD700;
     padding: 15px 8px;
@@ -344,16 +345,16 @@ header {
     gap: 20px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     opacity: 0;
-    transform: translateY(40px) rotateX(-15deg);
+    transform: translateY(40px) rotateX(-25deg);
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     cursor: pointer;
     position: relative;
-    margin-bottom: -12px;
+    margin-bottom: -18px;
 }
 
 .service-item.show {
     opacity: 1;
-    transform: translateY(0) rotateX(-15deg);
+    transform: translateY(0) rotateX(-25deg);
 }
 
 .service-item:nth-child(1) { z-index: 1; }
@@ -369,11 +370,12 @@ header {
 .service-item.active {
     transform: translateY(0) rotateX(0deg) !important;
     z-index: 20 !important;
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
 
 .service-item.shifted {
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    margin-bottom: -18px !important;
 }
 
 .service-description {
@@ -384,7 +386,8 @@ header {
     padding: 0 25px;
     background: rgba(255, 215, 0, 0.1);
     border-radius: 0 0 8px 8px;
-    margin-top: -8px;
+    margin-top: 0;
+    margin-bottom: 0;
     position: relative;
     z-index: 19;
 }
@@ -393,7 +396,8 @@ header {
     max-height: 200px;
     opacity: 1;
     padding: 15px 25px;
-    margin-bottom: 12px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .service-description p {
@@ -1073,57 +1077,60 @@ header {
     servicesObserver.observe(document.getElementById('servicesList'));
 
     // Клік на напрямки
-   const serviceItems = document.querySelectorAll('.service-item');
-const descriptions = {
-    0: "Сучасне обладнання для силових тренувань та кардіо. Професійні тренери допоможуть скласти індивідуальну програму.",
-    1: "Персональний підхід до кожного клієнта. Досвідчені тренери розроблять програму під ваші цілі.",
-    2: "Групи для дітей різного віку. Розвиток координації, сили та витривалості в ігровій формі.",
-    3: "Художня та спортивна гімнастика для дітей. Розвиток гнучкості та координації.",
-    4: "Зміцнення м'язів, покращення постави та гнучкості. Підходить для всіх рівнів підготовки.",
-    5: "Розтяжка для покращення гнучкості та зняття м'язового напруження.",
-    6: "Танцювальний напрямок для розвитку пластики та впевненості в собі.",
-    7: "Кардіо-тренування на степ-платформах. Спалювання калорій та зміцнення м'язів ніг.",
-    8: "Традиційні східні танці. Розвиток пластики, грації та жіночності."
-};
+    const serviceItems = document.querySelectorAll('.service-item');
+    const descriptions = {
+        0: "Сучасне обладнання для силових тренувань та кардіо. Професійні тренери допоможуть скласти індивідуальну програму.",
+        1: "Персональний підхід до кожного клієнта. Досвідчені тренери розроблять програму під ваші цілі.",
+        2: "Групи для дітей різного віку. Розвиток координації, сили та витривалості в ігровій формі.",
+        3: "Художня та спортивна гімнастика для дітей. Розвиток гнучкості та координації.",
+        4: "Зміцнення м'язів, покращення постави та гнучкості. Підходить для всіх рівнів підготовки.",
+        5: "Розтяжка для покращення гнучкості та зняття м'язового напруження.",
+        6: "Танцювальний напрямок для розвитку пластики та впевненості в собі.",
+        7: "Кардіо-тренування на степ-платформах. Спалювання калорій та зміцнення м'язів ніг.",
+        8: "Традиційні східні танці. Розвиток пластики, грації та жіночності."
+    };
 
-serviceItems.forEach((item, index) => {
-    item.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        
-        // Прибираємо active з усіх
-        serviceItems.forEach(el => {
-            el.classList.remove('active', 'shifted');
-            el.style.transform = '';
-            const desc = el.nextElementSibling;
-            if (desc && desc.classList.contains('service-description')) {
-                desc.remove();
+    serviceItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Прибираємо active з усіх
+            serviceItems.forEach(el => {
+                el.classList.remove('active', 'shifted');
+                el.style.transform = '';
+                const desc = el.nextElementSibling;
+                if (desc && desc.classList.contains('service-description')) {
+                    desc.remove();
+                }
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+                
+                // Додаємо опис
+                const desc = document.createElement('div');
+                desc.className = 'service-description';
+                desc.innerHTML = `<p>${descriptions[index]}</p>`;
+                item.after(desc);
+                
+                setTimeout(() => {
+                    desc.classList.add('show');
+                    // Чекаємо поки анімація завершиться
+                    setTimeout(() => {
+                        const descHeight = desc.offsetHeight;
+                        
+                        // Зсуваємо елементи нижче
+                        serviceItems.forEach((el, i) => {
+                            if (i > index) {
+                                el.classList.add('shifted');
+                                el.style.transform = `translateY(${descHeight}px) rotateX(-25deg)`;
+                            }
+                        });
+                    }, 50);
+                }, 10);
             }
         });
-
-        if (!isActive) {
-            item.classList.add('active');
-            
-            // Додаємо опис
-            const desc = document.createElement('div');
-            desc.className = 'service-description';
-            desc.innerHTML = `<p>${descriptions[index]}</p>`;
-            item.after(desc);
-            
-            setTimeout(() => {
-                desc.classList.add('show');
-                const descHeight = desc.scrollHeight;
-                
-                // Зсуваємо елементи нижче
-                serviceItems.forEach((el, i) => {
-                    if (i > index) {
-                        el.classList.add('shifted');
-                        el.style.transform = `translateY(${descHeight}px) rotateX(-15deg)`;
-                    }
-                });
-            }, 10);
-        }
     });
-});
 </script>
 </body>
 </html>
