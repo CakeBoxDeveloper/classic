@@ -368,7 +368,7 @@ header {
 .service-description.show {
     max-height: 200px;
     opacity: 1;
-    padding: 20px 25px;
+    padding: 20px 25px 38px 25px;
     margin: 0 0 -18px 0;
 }
 
@@ -1076,21 +1076,21 @@ header {
             desc.innerHTML = `<p>${descriptions[index]}</p>`;
             item.after(desc);
             
-            setTimeout(() => {
-                desc.classList.add('show');
-                // Чекаємо поки анімація завершиться
-                setTimeout(() => {
-                    const descHeight = desc.offsetHeight;
-                    
-                    // Зсуваємо елементи нижче
-                    serviceItems.forEach((el, i) => {
-                        if (i > index) {
-                            el.classList.add('shifted');
-                            el.style.transform = `translateY(${descHeight - 18}px) rotateX(-25deg)`;
-                        }
-                    });
-                }, 50);
-            }, 10);
+           setTimeout(() => {
+    desc.classList.add('show');
+    // Чекаємо поки анімація завершиться
+    setTimeout(() => {
+        const descHeight = desc.offsetHeight;
+        
+        // Зсуваємо елементи нижче
+        serviceItems.forEach((el, i) => {
+            if (i > index) {
+                el.classList.add('shifted');
+                el.style.transform = `translateY(${descHeight}px) rotateX(-25deg)`;
+            }
+        });
+    }, 50);
+}, 10);
         }
     });
 });
