@@ -349,7 +349,7 @@ header {
 
 .service-item.shifted {
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    margin-bottom: 0 !important;
+    margin-bottom: -18px !important;
 }
 
 .service-description {
@@ -360,7 +360,7 @@ header {
     padding: 0 25px;
     background: rgba(255, 215, 0, 0.1);
     border-radius: 0 0 8px 8px;
-    margin: 0;
+    margin: -18px 0 0 0;
     position: relative;
     z-index: 19;
 }
@@ -369,7 +369,7 @@ header {
     max-height: 200px;
     opacity: 1;
     padding: 15px 25px;
-    margin: 0;
+    margin: -18px 0 -18px 0;
 }
 
 .service-description p {
@@ -1053,48 +1053,48 @@ header {
         8: "Традиційні східні танці. Розвиток пластики, грації та жіночності."
     };
 
-    serviceItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-            
-            // Прибираємо active з усіх
-            serviceItems.forEach(el => {
-                el.classList.remove('active', 'shifted');
-                el.style.transform = '';
-                const desc = el.nextElementSibling;
-                if (desc && desc.classList.contains('service-description')) {
-                    desc.remove();
-                }
-            });
-
-            if (!isActive) {
-                item.classList.add('active');
-                
-                // Додаємо опис
-                const desc = document.createElement('div');
-                desc.className = 'service-description';
-                desc.innerHTML = `<p>${descriptions[index]}</p>`;
-                item.after(desc);
-                
-                setTimeout(() => {
-    desc.classList.add('show');
-    // Чекаємо поки анімація завершиться
-    setTimeout(() => {
-        const descHeight = desc.offsetHeight;
+   serviceItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
         
-        // Зсуваємо елементи нижче
-        serviceItems.forEach((el, i) => {
-            if (i > index) {
-                el.classList.add('shifted');
-                el.style.transform = `translateY(${descHeight}px) rotateX(-25deg)`;
-                el.style.marginBottom = '-18px';
+        // Прибираємо active з усіх
+        serviceItems.forEach(el => {
+            el.classList.remove('active', 'shifted');
+            el.style.transform = '';
+            el.style.marginBottom = '';
+            const desc = el.nextElementSibling;
+            if (desc && desc.classList.contains('service-description')) {
+                desc.remove();
             }
         });
-    }, 50);
-}, 10);
-            }
-        });
+
+        if (!isActive) {
+            item.classList.add('active');
+            
+            // Додаємо опис
+            const desc = document.createElement('div');
+            desc.className = 'service-description';
+            desc.innerHTML = `<p>${descriptions[index]}</p>`;
+            item.after(desc);
+            
+            setTimeout(() => {
+                desc.classList.add('show');
+                // Чекаємо поки анімація завершиться
+                setTimeout(() => {
+                    const descHeight = desc.offsetHeight;
+                    
+                    // Зсуваємо елементи нижче
+                    serviceItems.forEach((el, i) => {
+                        if (i > index) {
+                            el.classList.add('shifted');
+                            el.style.transform = `translateY(${descHeight - 36}px) rotateX(-25deg)`;
+                        }
+                    });
+                }, 50);
+            }, 10);
+        }
     });
+});
 </script>
 </body>
 </html>
