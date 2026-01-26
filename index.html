@@ -237,9 +237,9 @@ header {
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 8px;
     position: relative;
-    padding: 40px 10px;
+    padding: 30px 10px;
     margin-bottom: 20px;
 }
 
@@ -254,22 +254,22 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: scale(0.7);
 }
+
 
 /* Центральний блок */
 .stat-card.center-card {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.7);
+    transform: translate(-50%, -50%);
     background: #1a1a1a;
     border: 4px dashed #FFD700;
-    padding: 20px;
+    padding: 15px 8px;
     z-index: 10;
     box-shadow: none;
     aspect-ratio: 1 / 1;
-    width: auto;
+    width: calc(50% - 4px);
 }
 
 .center-card .stat-icon svg {
@@ -277,29 +277,28 @@ header {
 }
 
 .center-card .stat-number {
-    color: #FFD700;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 
 .center-card .stat-label {
-    color: #FFD700;
-    opacity: 1;
-    font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
-.stat-icon {
-    display: none;
-}
+
+ 
 
 .stat-icon svg {
     width: 32px;
     height: 32px;
 }
 
+.stat-icon {
+    display: none;
+}
+
 .stat-number {
     display: block;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 800;
     color: #FFD700;
     margin-bottom: 5px;
@@ -307,7 +306,7 @@ header {
 }
 
 .stat-label {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: #FFD700;
     opacity: 0.9;
     line-height: 1.3;
@@ -330,7 +329,7 @@ header {
     display: flex;
     flex-direction: column;
     gap: 0;
-    perspective: 1000px;
+    perspective: 1500px;
     margin-top: 20px;
     position: relative;
 }
@@ -343,39 +342,38 @@ header {
     display: flex;
     align-items: center;
     gap: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     opacity: 0;
-    transform: translateY(40px) rotateX(-8deg);
+    transform: translateY(40px) rotateX(-15deg);
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     cursor: pointer;
     position: relative;
-    z-index: 1;
-    margin-bottom: -8px;
+    margin-bottom: -12px;
 }
 
 .service-item.show {
     opacity: 1;
-    transform: translateY(0) rotateX(-8deg);
+    transform: translateY(0) rotateX(-15deg);
 }
 
-     .service-item:nth-child(1) { z-index: 9; }
-.service-item:nth-child(2) { z-index: 8; }
-.service-item:nth-child(3) { z-index: 7; }
-.service-item:nth-child(4) { z-index: 6; }
+.service-item:nth-child(1) { z-index: 1; }
+.service-item:nth-child(2) { z-index: 2; }
+.service-item:nth-child(3) { z-index: 3; }
+.service-item:nth-child(4) { z-index: 4; }
 .service-item:nth-child(5) { z-index: 5; }
-.service-item:nth-child(6) { z-index: 4; }
-.service-item:nth-child(7) { z-index: 3; }
-.service-item:nth-child(8) { z-index: 2; }
-.service-item:nth-child(9) { z-index: 1; }
+.service-item:nth-child(6) { z-index: 6; }
+.service-item:nth-child(7) { z-index: 7; }
+.service-item:nth-child(8) { z-index: 8; }
+.service-item:nth-child(9) { z-index: 9; }
 
 .service-item.active {
     transform: translateY(0) rotateX(0deg) !important;
-    z-index: 10 !important;
+    z-index: 20 !important;
     margin-bottom: 0;
 }
 
 .service-item.shifted {
-    transform: translateY(100px) rotateX(-8deg) !important;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .service-description {
@@ -387,6 +385,8 @@ header {
     background: rgba(255, 215, 0, 0.1);
     border-radius: 0 0 8px 8px;
     margin-top: -8px;
+    position: relative;
+    z-index: 19;
 }
 
 .service-description.show {
@@ -1073,54 +1073,57 @@ header {
     servicesObserver.observe(document.getElementById('servicesList'));
 
     // Клік на напрямки
-    const serviceItems = document.querySelectorAll('.service-item');
-    const descriptions = {
-        0: "Сучасне обладнання для силових тренувань та кардіо. Професійні тренери допоможуть скласти індивідуальну програму.",
-        1: "Персональний підхід до кожного клієнта. Досвідчені тренери розроблять програму під ваші цілі.",
-        2: "Групи для дітей різного віку. Розвиток координації, сили та витривалості в ігровій формі.",
-        3: "Художня та спортивна гімнастика для дітей. Розвиток гнучкості та координації.",
-        4: "Зміцнення м'язів, покращення постави та гнучкості. Підходить для всіх рівнів підготовки.",
-        5: "Розтяжка для покращення гнучкості та зняття м'язового напруження.",
-        6: "Танцювальний напрямок для розвитку пластики та впевненості в собі.",
-        7: "Кардіо-тренування на степ-платформах. Спалювання калорій та зміцнення м'язів ніг.",
-        8: "Традиційні східні танці. Розвиток пластики, грації та жіночності."
-    };
+   const serviceItems = document.querySelectorAll('.service-item');
+const descriptions = {
+    0: "Сучасне обладнання для силових тренувань та кардіо. Професійні тренери допоможуть скласти індивідуальну програму.",
+    1: "Персональний підхід до кожного клієнта. Досвідчені тренери розроблять програму під ваші цілі.",
+    2: "Групи для дітей різного віку. Розвиток координації, сили та витривалості в ігровій формі.",
+    3: "Художня та спортивна гімнастика для дітей. Розвиток гнучкості та координації.",
+    4: "Зміцнення м'язів, покращення постави та гнучкості. Підходить для всіх рівнів підготовки.",
+    5: "Розтяжка для покращення гнучкості та зняття м'язового напруження.",
+    6: "Танцювальний напрямок для розвитку пластики та впевненості в собі.",
+    7: "Кардіо-тренування на степ-платформах. Спалювання калорій та зміцнення м'язів ніг.",
+    8: "Традиційні східні танці. Розвиток пластики, грації та жіночності."
+};
 
-    serviceItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
+serviceItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Прибираємо active з усіх
+        serviceItems.forEach(el => {
+            el.classList.remove('active', 'shifted');
+            el.style.transform = '';
+            const desc = el.nextElementSibling;
+            if (desc && desc.classList.contains('service-description')) {
+                desc.remove();
+            }
+        });
+
+        if (!isActive) {
+            item.classList.add('active');
             
-            // Прибираємо active з усіх
-            serviceItems.forEach(el => {
-                el.classList.remove('active', 'shifted');
-                const desc = el.nextElementSibling;
-                if (desc && desc.classList.contains('service-description')) {
-                    desc.remove();
-                }
-            });
-
-            if (!isActive) {
-                item.classList.add('active');
+            // Додаємо опис
+            const desc = document.createElement('div');
+            desc.className = 'service-description';
+            desc.innerHTML = `<p>${descriptions[index]}</p>`;
+            item.after(desc);
+            
+            setTimeout(() => {
+                desc.classList.add('show');
+                const descHeight = desc.scrollHeight;
                 
                 // Зсуваємо елементи нижче
                 serviceItems.forEach((el, i) => {
                     if (i > index) {
                         el.classList.add('shifted');
+                        el.style.transform = `translateY(${descHeight}px) rotateX(-15deg)`;
                     }
                 });
-
-                // Додаємо опис
-                const desc = document.createElement('div');
-                desc.className = 'service-description';
-                desc.innerHTML = `<p>${descriptions[index]}</p>`;
-                item.after(desc);
-                
-                setTimeout(() => {
-                    desc.classList.add('show');
-                }, 10);
-            }
-        });
+            }, 10);
+        }
     });
+});
 </script>
 </body>
 </html>
