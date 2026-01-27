@@ -319,13 +319,7 @@ header {
     background: none;
     color: #FFD700;
     text-align: center;
-    padding: 0 0 15px 0;
-    font-size: 1.3rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin: 0;
-    border: none;
-}
+    padding: 0 0 7.5px 0;
 
 .services-list {
     display: flex;
@@ -368,6 +362,7 @@ header {
 .service-item:nth-child(7) { z-index: 7; }
 .service-item:nth-child(8) { z-index: 8; }
 .service-item:nth-child(9) { z-index: 9; }
+ .service-item:nth-child(10) { z-index: 10; }
 
 .service-item.active {
     transform: translateY(0) rotateX(0deg) scale(1.05) !important;
@@ -389,6 +384,7 @@ header {
 .service-item:nth-child(7).shifted { z-index: 7 !important; }
 .service-item:nth-child(8).shifted { z-index: 8 !important; }
 .service-item:nth-child(9).shifted { z-index: 9 !important; }
+ .service-item:nth-child(10).shifted { z-index: 10 !important; }
 
 .service-description {
     max-height: 0;
@@ -613,11 +609,7 @@ header {
     text-align: center;
     text-decoration: none;
     border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    border: none;
-}
+    font-weight: 800;
 
 .social-item:hover {
     background: #ffed4e;
@@ -943,6 +935,16 @@ header {
 </span>
 <span class="service-text">Східні танці</span>
 </div>
+
+
+     <div class="service-item">
+<span class="service-icon">
+<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+</span>
+<span class="service-text">Індійські танці</span>
+</div>
+
+     
 </div>
 </div>
 <div class="container">
@@ -1155,7 +1157,8 @@ obs.observe(document.querySelector('.stats-grid'));
         5: "Розтяжка для покращення гнучкості та зняття м'язового напруження.",
         6: "Танцювальний напрямок для розвитку пластики та впевненості в собі.",
         7: "Кардіо-тренування на степ-платформах. Спалювання калорій та зміцнення м'язів ніг.",
-        8: "Традиційні східні танці. Розвиток пластики, грації та жіночності."
+        8: "Традиційні східні танці. Розвиток пластики, грації та жіночності.",
+        9: "Енергійні та виразні індійські танці. Розвиток пластики, координації та культурної обізнаності."
     };
 
   serviceItems.forEach((item, index) => {
