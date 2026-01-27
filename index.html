@@ -337,20 +337,23 @@ header {
 }
 
 .service-item {
-    background: #FFD700;
+    background: linear-gradient(135deg, #FFD700 0%, #FFC700 100%);
     color: #1a1a1a;
     border-radius: 8px;
     padding: 18px 25px;
     display: flex;
     align-items: center;
     gap: 20px;
-       box-shadow: 
+    box-shadow: 
+        0 -1px 0 rgba(255, 255, 255, 0.6),
+        0 -2px 0 #e8c13f,
+        0 -3px 0 #ddb538,
+        0 -4px 0 #d2a931,
+        0 -5px 0 #c79d2a,
+        0 -6px 0 #bc9123,
         0 8px 20px rgba(0,0,0,0.4),
-        0 4px 0 #d4af37,
-        0 5px 0 #c9a632,
-        0 6px 0 #be9d2d,
-        0 7px 0 #b39428,
-        0 8px 0 #a88b23;
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
     opacity: 0;
     transform: translateY(40px) rotateX(-25deg);
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -358,6 +361,8 @@ header {
     position: relative;
     margin-bottom: -18px;
     z-index: 1;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .service-item.show {
