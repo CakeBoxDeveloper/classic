@@ -188,11 +188,14 @@ header {
 }
      .verify-icon {
     display: inline-block;
-    width: 20px;  /* Налаштуйте розмір під ваш шрифт */
-    height: 20px;
-    background-color: #ffed4e; /* Колір іконки */
+    width: 18px; 
+    height: 18px;
+    background-color: #ffed4e;
     
-    /* Шлях до іконки */
+    /* Робимо контур товстішим за допомогою border */
+    border: 1.2px solid #ffed4e; 
+    border-radius: 50%; /* Щоб border повторював форму значка */
+
     -webkit-mask-image: url('https://raw.githubusercontent.com/CakeBoxDeveloper/classic/b648d15693f58d594912d82305e7f8ee042f3899/verified-badge-svgrepo-com%20(1).svg');
     mask-image: url('https://raw.githubusercontent.com/CakeBoxDeveloper/classic/b648d15693f58d594912d82305e7f8ee042f3899/verified-badge-svgrepo-com%20(1).svg');
     
