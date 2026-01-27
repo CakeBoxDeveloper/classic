@@ -236,43 +236,83 @@ header {
 }
 
 /* --- Stats Dashboard --- */
+/* --- Stats Dashboard --- */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 20px;
     padding: 20px 0 0 0;
 }
 
 .stat-card {
-    background: rgba(255, 215, 0, 0.1);
+    position: relative;
     padding: 20px;
-    border-radius: 10px;
     text-align: center;
-    border: 2px solid rgba(255, 215, 0, 0.3);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .stat-icon {
-    display: block;
-    margin-bottom: 10px;
+    display: none;
 }
 
-.stat-icon svg {
-    width: 40px;
-    height: 40px;
-    fill: #FFD700;
+.speedometer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+}
+
+.speedometer-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.speedometer-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 8;
+    stroke-linecap: round;
+}
+
+.speedometer-progress {
+    fill: none;
+    stroke: #FFD700;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 0 1000;
+    transition: stroke-dasharray 2s ease-out;
+}
+
+.stat-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .stat-number {
     display: block;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 800;
     color: #FFD700;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    line-height: 1;
 }
 
 .stat-label {
-    font-size: 0.9rem;
-    opacity: 0.8;
+    font-size: 0.85rem;
+    opacity: 0.9;
+    color: #fff;
+    line-height: 1.2;
 }
 /* Стилі для блоку Напрямки */
 .services-header {
@@ -779,47 +819,55 @@ header {
 <div class="container">
     <div class="stats-grid">
         <div class="stat-card">
-             
-            <div class="stat-icon">
-                <svg viewBox="0 0 24 24" fill="#FFD700">
-                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+            <div class="speedometer">
+                <svg class="speedometer-svg" viewBox="0 0 200 200">
+                    <circle class="speedometer-bg" cx="100" cy="100" r="85"/>
+                    <circle class="speedometer-progress" cx="100" cy="100" r="85"/>
                 </svg>
             </div>
-            <span class="stat-number" data-target="15">0</span>
-            <span class="stat-label">Років досвіду</span>
+            <div class="stat-content">
+                <span class="stat-number" data-target="15">0</span>
+                <span class="stat-label">Років досвіду</span>
+            </div>
         </div>
         
         <div class="stat-card">
-           
-            <div class="stat-icon">
-                <svg viewBox="0 0 24 24" fill="#FFD700">
-                    <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
+            <div class="speedometer">
+                <svg class="speedometer-svg" viewBox="0 0 200 200">
+                    <circle class="speedometer-bg" cx="100" cy="100" r="85"/>
+                    <circle class="speedometer-progress" cx="100" cy="100" r="85"/>
                 </svg>
             </div>
-            <span class="stat-number" data-target="8">0</span>
-            <span class="stat-label">Тренерів</span>
+            <div class="stat-content">
+                <span class="stat-number" data-target="8">0</span>
+                <span class="stat-label">Тренерів</span>
+            </div>
         </div>
         
         <div class="stat-card">
-           
-            <div class="stat-icon">
-                <svg viewBox="0 0 24 24" fill="#FFD700">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            <div class="speedometer">
+                <svg class="speedometer-svg" viewBox="0 0 200 200">
+                    <circle class="speedometer-bg" cx="100" cy="100" r="85"/>
+                    <circle class="speedometer-progress" cx="100" cy="100" r="85"/>
                 </svg>
             </div>
-            <span class="stat-number" data-target="6">0</span>
-            <span class="stat-label">Дитячих груп</span>
+            <div class="stat-content">
+                <span class="stat-number" data-target="6">0</span>
+                <span class="stat-label">Дитячих груп</span>
+            </div>
         </div>
         
         <div class="stat-card">
-         
-            <div class="stat-icon">
-                <svg viewBox="0 0 24 24" fill="#FFD700">
-                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+            <div class="speedometer">
+                <svg class="speedometer-svg" viewBox="0 0 200 200">
+                    <circle class="speedometer-bg" cx="100" cy="100" r="85"/>
+                    <circle class="speedometer-progress" cx="100" cy="100" r="85"/>
                 </svg>
             </div>
-            <span class="stat-number" data-target="12">0</span>
-            <span class="stat-label">Напрямків</span>
+            <div class="stat-content">
+                <span class="stat-number" data-target="12">0</span>
+                <span class="stat-label">Напрямків</span>
+            </div>
         </div>
     </div>
 </div>
@@ -1019,24 +1067,43 @@ header {
 
     // Анімація лічильників
 // Анімація лічильників
+// Анімація спідометрів
 const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.stat-number').forEach(num => {
-                const target = +num.dataset.target;
-                if (target) {
-                    let count = 0;
-                    const inc = target / 60;
-                    const timer = setInterval(() => {
-                        count += inc;
-                        if (count >= target) {
-                            num.innerText = target;
-                            clearInterval(timer);
-                        } else {
-                            num.innerText = Math.floor(count);
-                        }
-                    }, 25);
-                }
+            const cards = entry.target.querySelectorAll('.stat-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    const num = card.querySelector('.stat-number');
+                    const progress = card.querySelector('.speedometer-progress');
+                    const target = +num.dataset.target;
+                    
+                    if (target) {
+                        // Анімація числа
+                        let count = 0;
+                        const inc = target / 60;
+                        const timer = setInterval(() => {
+                            count += inc;
+                            if (count >= target) {
+                                num.innerText = target;
+                                clearInterval(timer);
+                            } else {
+                                num.innerText = Math.floor(count);
+                            }
+                        }, 25);
+                        
+                        // Анімація спідометра (з 0% до відповідного відсотка)
+                        const maxValue = 15; // максимальне значення для розрахунку відсотків
+                        const percentage = (target / maxValue) * 100;
+                        const circumference = 2 * Math.PI * 85; // радіус кола 85
+                        const angle = (percentage / 100) * 270; // 270 градусів = 3/4 кола
+                        const dashLength = (angle / 360) * circumference;
+                        
+                        setTimeout(() => {
+                            progress.style.strokeDasharray = `${dashLength} ${circumference}`;
+                        }, 100);
+                    }
+                }, index * 150); // затримка між картками
             });
             obs.unobserve(entry.target);
         }
