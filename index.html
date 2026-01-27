@@ -263,18 +263,56 @@ header {
     padding: 15px 8px;
     border-radius: 8px;
     text-align: center;
-    border: 4px dashed #FFD700;
+    border: 4px dashed transparent;
     aspect-ratio: 1 / 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow: visible;
 }
 
 
- 
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 8px;
+    border: 4px dashed #FFD700;
+    stroke-dasharray: 20;
+    stroke-dashoffset: 500;
+    opacity: 0;
+}
 
- 
+.stat-card.animate::before {
+    animation: drawBorder 2s ease-out forwards;
+}
+@keyframes drawBorder {
+    0% {
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+        opacity: 1;
+    }
+    25% {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    50% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    75% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        opacity: 1;
+    }
+}
+ .stat-card.draw-complete {
+    border: 4px dashed #FFD700;
+}
 
 .stat-icon svg {
     width: 32px;
@@ -1009,7 +1047,7 @@ header {
     document.getElementById('motivationQuote').addEventListener('click', showRandomQuote);
 
     // Анімація лічильників
- const obs = new IntersectionObserver((entries) => {
+const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             // Анімація чисел
@@ -1030,15 +1068,15 @@ header {
                 }
             });
             
-            // Анімація пунктирної обводки з рандомною затримкою
-            entry.target.querySelectorAll('.stat-card').forEach((card, index) => {
-                const randomDelay = Math.random() * 600; // Рандомна затримка від 0 до 600мс
+            // Анімація обводки з рандомною затримкою
+            entry.target.querySelectorAll('.stat-card').forEach((card) => {
+                const randomDelay = Math.random() * 400;
                 setTimeout(() => {
                     card.classList.add('animate');
-                    // Видаляємо клас після завершення анімації
                     setTimeout(() => {
                         card.classList.remove('animate');
-                    }, 1500);
+                        card.classList.add('draw-complete');
+                    }, 2000);
                 }, randomDelay);
             });
             
