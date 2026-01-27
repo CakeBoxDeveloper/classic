@@ -239,88 +239,48 @@ header {
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    position: relative;
-    padding: 30px 10px 0 10px;
-    margin-bottom: -20px;
+    gap: 15px;
+    padding: 20px 0;
 }
 
 .stat-card {
-    background: transparent;
-    padding: 15px 8px;
-    border-radius: 8px;
+    background: rgba(255, 215, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
     text-align: center;
-    border: none;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: visible;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    transition: all 0.3s ease;
 }
 
-.stat-card svg.border-svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-
-.stat-card svg.border-svg rect {
-    fill: none;
-    stroke: #FFD700;
-    stroke-width: 4;
-    stroke-dasharray: 8 4;
-    stroke-dashoffset: 800;
-    rx: 8;
-    ry: 8;
-    stroke-linecap: round;
-}
-.stat-card.animate svg.border-svg rect {
-    animation: drawStroke 2s ease-out forwards;
-}
-
-@keyframes drawStroke {
-    from {
-        stroke-dashoffset: 800;
-    }
-    to {
-        stroke-dashoffset: 0;
-    }
-}
- 
-
- 
-
-.stat-icon svg {
-    width: 32px;
-    height: 32px;
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: #FFD700;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
 }
 
 .stat-icon {
-    display: none;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.stat-icon svg {
+    width: 40px;
+    height: 40px;
+    fill: #FFD700;
 }
 
 .stat-number {
     display: block;
-    font-size: 3.2rem;
+    font-size: 2.5rem;
     font-weight: 800;
     color: #FFD700;
-    margin-bottom: 8px;
-    line-height: 1;
+    margin-bottom: 5px;
 }
 
 .stat-label {
-    font-size: 1.5rem;
-    color: #FFD700;
-    opacity: 0.9;
-    line-height: 1.2;
+    font-size: 0.9rem;
+    opacity: 0.8;
 }
-
 /* Стилі для блоку Напрямки */
 .services-header {
     background: none;
@@ -378,8 +338,11 @@ header {
 
 .service-item.active {
     transform: translateY(0) rotateX(0deg) scale(1.05) !important;
-    z-index: 20 !important;
+    z-index: 15 !important;
     margin-bottom: 0 !important;
+}
+     .service-item:nth-child(9).active {
+    z-index: 10 !important;
 }
 
 .service-item.shifted {
@@ -808,9 +771,7 @@ header {
 <div class="container">
     <div class="stats-grid">
         <div class="stat-card">
-            <svg class="border-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <rect x="2" y="2" width="96" height="96" />
-            </svg>
+             
             <div class="stat-icon">
                 <svg viewBox="0 0 24 24" fill="#FFD700">
                     <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
@@ -821,9 +782,7 @@ header {
         </div>
         
         <div class="stat-card">
-            <svg class="border-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <rect x="2" y="2" width="96" height="96" />
-            </svg>
+           
             <div class="stat-icon">
                 <svg viewBox="0 0 24 24" fill="#FFD700">
                     <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/>
@@ -834,9 +793,7 @@ header {
         </div>
         
         <div class="stat-card">
-            <svg class="border-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <rect x="2" y="2" width="96" height="96" />
-            </svg>
+           
             <div class="stat-icon">
                 <svg viewBox="0 0 24 24" fill="#FFD700">
                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
@@ -847,9 +804,7 @@ header {
         </div>
         
         <div class="stat-card">
-            <svg class="border-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-                <rect x="2" y="2" width="96" height="96" />
-            </svg>
+         
             <div class="stat-icon">
                 <svg viewBox="0 0 24 24" fill="#FFD700">
                     <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
@@ -1055,10 +1010,10 @@ header {
     document.getElementById('motivationQuote').addEventListener('click', showRandomQuote);
 
     // Анімація лічильників
+// Анімація лічильників
 const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            // Анімація чисел
             entry.target.querySelectorAll('.stat-number').forEach(num => {
                 const target = +num.dataset.target;
                 if (target) {
@@ -1075,15 +1030,6 @@ const obs = new IntersectionObserver((entries) => {
                     }, 25);
                 }
             });
-            
-            // Анімація обводки з рандомною затримкою
-            entry.target.querySelectorAll('.stat-card').forEach((card) => {
-                const randomDelay = Math.random() * 500;
-                setTimeout(() => {
-                    card.classList.add('animate');
-                }, randomDelay);
-            });
-            
             obs.unobserve(entry.target);
         }
     });
