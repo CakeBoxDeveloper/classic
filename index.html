@@ -56,6 +56,21 @@ html {
     opacity: 1;
 }
 
+     @keyframes dashAnimation {
+    0%, 100% {
+        border-color: #FFD700;
+        transform: scale(1);
+    }
+    50% {
+        border-color: rgba(255, 215, 0, 0.5);
+        transform: scale(1.02);
+    }
+}
+
+.stat-card.animate {
+    animation: dashAnimation 1.5s ease-in-out;
+}
+
 /* Контейнер для всіх блоків */
 .container {
     width: 90%;
@@ -994,31 +1009,45 @@ header {
     document.getElementById('motivationQuote').addEventListener('click', showRandomQuote);
 
     // Анімація лічильників
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.querySelectorAll('.stat-number').forEach(num => {
-                    const target = +num.dataset.target;
-                    if (target) {
-                        let count = 0;
-                        const inc = target / 60;
-                        const timer = setInterval(() => {
-                            count += inc;
-                            if (count >= target) {
-                                num.innerText = target;
-                                clearInterval(timer);
-                            } else {
-                                num.innerText = Math.floor(count);
-                            }
-                        }, 25);
-                    }
-                });
-                obs.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 });
-    
-    obs.observe(document.querySelector('.stats-grid'));
+ const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Анімація чисел
+            entry.target.querySelectorAll('.stat-number').forEach(num => {
+                const target = +num.dataset.target;
+                if (target) {
+                    let count = 0;
+                    const inc = target / 60;
+                    const timer = setInterval(() => {
+                        count += inc;
+                        if (count >= target) {
+                            num.innerText = target;
+                            clearInterval(timer);
+                        } else {
+                            num.innerText = Math.floor(count);
+                        }
+                    }, 25);
+                }
+            });
+            
+            // Анімація пунктирної обводки з рандомною затримкою
+            entry.target.querySelectorAll('.stat-card').forEach((card, index) => {
+                const randomDelay = Math.random() * 600; // Рандомна затримка від 0 до 600мс
+                setTimeout(() => {
+                    card.classList.add('animate');
+                    // Видаляємо клас після завершення анімації
+                    setTimeout(() => {
+                        card.classList.remove('animate');
+                    }, 1500);
+                }, randomDelay);
+            });
+            
+            obs.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.3 });
+
+obs.observe(document.querySelector('.stats-grid'));
 
     updateCarousel();
 
