@@ -186,23 +186,25 @@ header {
     margin-bottom: 3px;
       color: #ffed4e;
 }
-     .verify-icon {
+   .verify-icon {
     display: inline-block;
     width: 18px; 
     height: 18px;
     background-color: #ffed4e;
-    
-    /* Робимо контур товстішим за допомогою border */
-    border: 1.2px solid #ffed4e; 
-    border-radius: 50%; /* Щоб border повторював форму значка */
 
-    -webkit-mask-image: url('https://raw.githubusercontent.com/CakeBoxDeveloper/classic/b648d15693f58d594912d82305e7f8ee042f3899/verified-badge-svgrepo-com%20(1).svg');
-    mask-image: url('https://raw.githubusercontent.com/CakeBoxDeveloper/classic/b648d15693f58d594912d82305e7f8ee042f3899/verified-badge-svgrepo-com%20(1).svg');
-    
-    mask-size: contain;
-    -webkit-mask-size: contain;
-    mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;
+    /* ВЫРАВНИВАНИЕ */
+    vertical-align: middle;
+    margin-bottom: 2px; /* Тонкая настройка, если flexbox не справляется */
+
+    /* УТОЛЩЕНИЕ КОНТУРА (создаем микро-тени в разные стороны) */
+    filter: drop-shadow(0.5px 0 0 #ffed4e) 
+            drop-shadow(-0.5px 0 0 #ffed4e) 
+            drop-shadow(0 0.5px 0 #ffed4e) 
+            drop-shadow(0 -0.5px 0 #ffed4e);
+
+    /* МАСКА */
+    -webkit-mask: url('https://raw.githubusercontent.com/CakeBoxDeveloper/classic/b648d15693f58d594912d82305e7f8ee042f3899/verified-badge-svgrepo-com%20(1).svg') no-repeat center / contain;
+    mask: url('https://raw.githubusercontent.com/CakeBoxDeveloper/classic/b648d15693f58d594912d82305e7f8ee042f3899/verified-badge-svgrepo-com%20(1).svg') no-repeat center / contain;
 }
 
 .trainer-skills {
