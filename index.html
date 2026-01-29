@@ -451,9 +451,12 @@ header {
     opacity: 0;
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     padding: 0 25px;
-    background: rgba(255, 215, 0, 0.1);
+    background: linear-gradient(to bottom, 
+        rgba(255, 215, 0, 0.15) 0%, 
+        rgba(255, 215, 0, 0.08) 50%, 
+        rgba(255, 215, 0, 0) 100%);
     border-radius: 0 0 8px 8px;
-    margin: 0;  /* Изменено с margin: -18px 0 0 0; */
+    margin: 0;
     position: relative;
     z-index: 19;
 }
@@ -1443,7 +1446,7 @@ obs.observe(document.querySelector('.stats-grid'));
     const desc = el.nextElementSibling;
     if (desc && desc.classList.contains('service-description')) {
         desc.classList.remove('show'); // Сначала убираем класс show
-        setTimeout(() => desc.remove(), 100); // Удаляем после анимации
+        setTimeout(() => desc.remove(), 10); // Удаляем после анимации
     }
 });
 
@@ -1470,7 +1473,7 @@ setTimeout(() => {
     serviceItems.forEach((el, i) => {
         if (i > index) {
             el.classList.add('shifted');
-            el.style.transform = `translateY(${descHeight - 54}px) rotateX(-25deg)`;
+            el.style.transform = `translateY(${descHeight - 74}px) rotateX(-25deg)`;
         }
     });
 }, 10);
