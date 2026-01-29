@@ -453,7 +453,7 @@ header {
     padding: 0 25px;
     background: rgba(255, 215, 0, 0.1);
     border-radius: 0 0 8px 8px;
-    margin: -18px 0 0 0;
+    margin: 0;  /* Изменено с margin: -18px 0 0 0; */
     position: relative;
     z-index: 19;
 }
@@ -462,7 +462,7 @@ header {
     max-height: 200px;
     opacity: 1;
     padding: 20px 25px;
-    margin: 0 0 -18px 0;
+    margin: 0;  /* Изменено с margin: 0 0 -18px 0; */
 }
 
 .service-description p {
@@ -1469,7 +1469,7 @@ setTimeout(() => {
     serviceItems.forEach((el, i) => {
         if (i > index) {
             el.classList.add('shifted');
-            el.style.transform = `translateY(${descHeight - 18}px) rotateX(-25deg)`;
+            el.style.transform = `translateY(${descHeight}px) rotateX(-25deg)`;
         }
     });
 }, 10);
