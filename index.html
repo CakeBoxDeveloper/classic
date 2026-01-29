@@ -1454,13 +1454,20 @@ const descriptions = {
         const isActive = item.classList.contains('active');
         
         // Прибираємо active з усіх
-   serviceItems.forEach(el => {
-    el.classList.remove('active', 'shifted');
+  serviceItems.forEach(el => {
+    if (el.classList.contains('shifted')) {
+        el.classList.remove('shifted');
+    }
     el.style.transform = '';
+    // Верни естественный z-index
+    const naturalIndex = Array.from(serviceItems).indexOf(el) + 1;
+    if (!el.classList.contains('active')) {
+        el.style.zIndex = naturalIndex;
+    }
     const desc = el.nextElementSibling;
     if (desc && desc.classList.contains('service-description')) {
-        desc.classList.remove('show'); // Сначала убираем класс show
-        setTimeout(() => desc.remove(), 10); // Удаляем после анимации
+        desc.classList.remove('show');
+        setTimeout(() => desc.remove(), 500);
     }
 });
 
