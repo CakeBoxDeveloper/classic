@@ -45,12 +45,12 @@ body::before {
     pointer-events: none;
     z-index: -1;
 }
- .schedule-link {
-    display: inline-block;
+.schedule-link {
+    display: block;
     color: #FFD700;
     text-decoration: none;
     font-weight: 700;
-    margin-top: 8px;
+    margin-top: 12px;
     transition: all 0.3s ease;
 }
 
@@ -1454,20 +1454,14 @@ const descriptions = {
         const isActive = item.classList.contains('active');
         
         // Прибираємо active з усіх
-  serviceItems.forEach(el => {
-    if (el.classList.contains('shifted')) {
-        el.classList.remove('shifted');
-    }
+serviceItems.forEach(el => {
+    el.classList.remove('active', 'shifted');
     el.style.transform = '';
-    // Верни естественный z-index
     const naturalIndex = Array.from(serviceItems).indexOf(el) + 1;
-    if (!el.classList.contains('active')) {
-        el.style.zIndex = naturalIndex;
-    }
+    el.style.zIndex = naturalIndex;
     const desc = el.nextElementSibling;
     if (desc && desc.classList.contains('service-description')) {
-        desc.classList.remove('show');
-        setTimeout(() => desc.remove(), 500);
+        desc.remove();
     }
 });
 
