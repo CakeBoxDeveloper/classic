@@ -1443,7 +1443,7 @@ obs.observe(document.querySelector('.stats-grid'));
     const desc = el.nextElementSibling;
     if (desc && desc.classList.contains('service-description')) {
         desc.classList.remove('show'); // Сначала убираем класс show
-        setTimeout(() => desc.remove(), 500); // Удаляем после анимации
+        setTimeout(() => desc.remove(), 100); // Удаляем после анимации
     }
 });
 
@@ -1470,7 +1470,7 @@ setTimeout(() => {
     serviceItems.forEach((el, i) => {
         if (i > index) {
             el.classList.add('shifted');
-            el.style.transform = `translateY(${descHeight - 36}px) rotateX(-25deg)`;
+            el.style.transform = `translateY(${descHeight - 54}px) rotateX(-25deg)`;
         }
     });
 }, 10);
