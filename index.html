@@ -1437,14 +1437,15 @@ obs.observe(document.querySelector('.stats-grid'));
         const isActive = item.classList.contains('active');
         
         // Прибираємо active з усіх
-        serviceItems.forEach(el => {
-            el.classList.remove('active', 'shifted');
-            el.style.transform = '';
-            const desc = el.nextElementSibling;
-            if (desc && desc.classList.contains('service-description')) {
-                desc.remove();
-            }
-        });
+   serviceItems.forEach(el => {
+    el.classList.remove('active', 'shifted');
+    el.style.transform = '';
+    const desc = el.nextElementSibling;
+    if (desc && desc.classList.contains('service-description')) {
+        desc.classList.remove('show'); // Сначала убираем класс show
+        setTimeout(() => desc.remove(), 500); // Удаляем после анимации
+    }
+});
 
         if (!isActive) {
             item.classList.add('active');
