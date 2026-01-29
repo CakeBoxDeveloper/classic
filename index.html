@@ -537,8 +537,9 @@ header {
 .price-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; /* Изменено с center на flex-start */
 }
+
 
 .price-name {
     font-size: 1.1rem;
@@ -547,6 +548,14 @@ header {
     letter-spacing: 0.5px;
     color: #FFD700;
     line-height: 1;
+}
+
+
+.price-value-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
 }
 
 .price-value {
@@ -774,10 +783,11 @@ header {
     object-fit: cover;
 }
 .price-old {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #888;
     text-decoration: line-through;
     opacity: 0.7;
+    line-height: 1;
 }
      
     </style>
@@ -1069,34 +1079,42 @@ header {
     <div class="price-card">
         <div class="price-header">
             <span class="price-name">Базовий</span>
-            <span class="price-value">750₴</span>
+            <div class="price-value-container">
+                <span class="price-value">750₴</span>
+                <span class="price-old">900₴</span>
+            </div>
         </div>
         <span class="price-period">8 занять/міс</span>
-        <span class="price-old">900₴</span>
     </div>
     <div class="price-card">
         <div class="price-header">
             <span class="price-name">Безліміт</span>
-            <span class="price-value">1000₴</span>
+            <div class="price-value-container">
+                <span class="price-value">1000₴</span>
+                <span class="price-old">1200₴</span>
+            </div>
         </div>
         <span class="price-period">повний доступ</span>
-        <span class="price-old">1200₴</span>
     </div>
     <div class="price-card">
         <div class="price-header">
             <span class="price-name">Персональний</span>
-            <span class="price-value">2300₴</span>
+            <div class="price-value-container">
+                <span class="price-value">2300₴</span>
+                <span class="price-old">2800₴</span>
+            </div>
         </div>
         <span class="price-period">10 занять/міс</span>
-        <span class="price-old">2800₴</span>
     </div>
     <div class="price-card">
         <div class="price-header">
             <span class="price-name">Дитячий</span>
-            <span class="price-value">850₴</span>
+            <div class="price-value-container">
+                <span class="price-value">850₴</span>
+                <span class="price-old">1000₴</span>
+            </div>
         </div>
         <span class="price-period">групові тренування</span>
-        <span class="price-old">1000₴</span>
     </div>
 </div>
     <div class="cta-footer-content">
