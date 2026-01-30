@@ -58,46 +58,55 @@ body::before {
 .price-branches {
     position: relative;
     margin-top: 12px;
-    padding-left: 0;
 }
 
 .price-card-with-branches {
     position: relative;
-    padding-left: 25px;
-}
-
-.price-card-with-branches .price-header,
-.price-card-with-branches .price-period {
-    position: relative;
-    z-index: 2;
 }
 
 .price-card-with-branches::after {
     content: '';
     position: absolute;
-    left: 8px;
-    top: 15px;
+    left: 20px;
+    top: 24px;
     bottom: 20px;
     width: 3px;
     background: #FFD700;
-    z-index: 1;
+}
+
+.price-card-with-branches .price-header:first-child {
+    padding-left: 45px;
+    position: relative;
+}
+
+.price-card-with-branches .price-header:first-child::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 25px;
+    height: 3px;
+    background: #FFD700;
+}
+
+.price-card-with-branches .price-period {
+    padding-left: 45px;
 }
 
 .price-branch-item {
     position: relative;
-    padding-left: 20px;
+    padding-left: 45px;
     margin-bottom: 8px;
 }
 
 .price-branch-item::before {
     content: '';
     position: absolute;
-    left: -17px;
+    left: 0;
     top: 50%;
-    width: 20px;
+    width: 25px;
     height: 3px;
     background: #FFD700;
-    z-index: 1;
 }
 
 .price-branch-item:last-child {
