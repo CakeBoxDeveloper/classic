@@ -57,65 +57,66 @@ body::before {
  
 .price-branches {
     position: relative;
-    margin-top: 12px;
+    margin-top: 16px;
+    padding-left: 15px;
 }
 
 .price-card-with-branches {
     position: relative;
 }
 
-/* Вертикальна лінія гілки */
-.price-card-with-branches::after {
+/* Головна вертикальна лінія */
+.price-branches::before {
     content: '';
     position: absolute;
-    left: 20px;
-    top: 60px; /* Починається після заголовка */
-    bottom: 28px; /* Закінчується біля останнього елемента */
-    width: 2px; /* Тонша лінія */
-    background: rgba(255, 215, 0, 0.4);
+    left: 0;
+    top: 0;
+    bottom: 15px;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+        rgba(255, 215, 0, 0.6) 0%,
+        rgba(255, 215, 0, 0.3) 100%);
 }
 
-/* Стиль для елементів гілки */
 .price-branch-item {
     position: relative;
-    padding-left: 45px;
-    margin-bottom: 12px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-left: 30px;
+    margin-bottom: 10px;
 }
 
-/* Горизонтальна лінія від вертикалі */
+/* Горизонтальна гілка */
 .price-branch-item::before {
     content: '';
     position: absolute;
-    left: 20px;
-    top: 50%;
-    width: 15px; /* Коротша лінія */
+    left: 0;
+    top: 20px;
+    width: 20px;
     height: 2px;
     background: rgba(255, 215, 0, 0.4);
 }
 
-/* Закруглення в місці з'єднання */
+/* Крапка-з'єднувач */
 .price-branch-item::after {
     content: '';
     position: absolute;
-    left: 20px;
-    top: 50%;
-    width: 8px;
-    height: 8px;
-    border: 2px solid rgba(255, 215, 0, 0.4);
+    left: 18px;
+    top: 17px;
+    width: 6px;
+    height: 6px;
+    background: #FFD700;
     border-radius: 50%;
-    background: #1a1a1a;
-    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 2px rgba(26, 26, 26, 1);
 }
 
-.price-branch-item:last-child {
-    margin-bottom: 0;
-}
-
-/* Закруглення на останньому елементі */
 .price-branch-item:last-child::before {
-    border-bottom-left-radius: 8px;
+    top: 0;
+    height: 20px;
+    width: 2px;
+    border-bottom-left-radius: 10px;
+    border-left: 2px solid rgba(255, 215, 0, 0.4);
+    border-bottom: 2px solid rgba(255, 215, 0, 0.4);
+    background: transparent;
+    width: 20px;
 }
 html {
     overflow-x: hidden;
