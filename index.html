@@ -57,36 +57,39 @@ body::before {
  
 .price-branches {
     position: relative;
-    padding-left: 20px;
     margin-top: 12px;
 }
 
-.price-branches::before {
+.price-card-with-branches {
+    position: relative;
+}
+
+.price-card-with-branches::after {
     content: '';
     position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
+    left: 20px;
+    top: 15px;
+    bottom: 20px;
+    width: 3px;
     background: #FFD700;
-    opacity: 0.4;
+    opacity: 0.6;
 }
 
 .price-branch-item {
     position: relative;
-    padding-left: 15px;
+    padding-left: 35px;
     margin-bottom: 8px;
 }
 
 .price-branch-item::before {
     content: '';
     position: absolute;
-    left: -20px;
+    left: 0;
     top: 50%;
-    width: 15px;
-    height: 2px;
+    width: 35px;
+    height: 3px;
     background: #FFD700;
-    opacity: 0.4;
+    opacity: 0.6;
 }
 
 .price-branch-item:last-child {
@@ -1248,7 +1251,7 @@ header {
         <span class="price-period">Необмежений повний доступ до залу</span>
     </div>
  
-<div class="price-card">
+<div class="price-card price-card-with-branches">
     <div class="price-header">
         <span class="price-name">Персональний</span>
         <div class="price-value-container">
