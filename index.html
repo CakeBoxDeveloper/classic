@@ -64,53 +64,58 @@ body::before {
     position: relative;
 }
 
+/* Вертикальна лінія гілки */
 .price-card-with-branches::after {
     content: '';
     position: absolute;
     left: 20px;
-    top: 24px;
-    bottom: 20px;
-    width: 3px;
-    background: #FFD700;
+    top: 60px; /* Починається після заголовка */
+    bottom: 28px; /* Закінчується біля останнього елемента */
+    width: 2px; /* Тонша лінія */
+    background: rgba(255, 215, 0, 0.4);
 }
 
-.price-card-with-branches .price-header:first-child {
-    padding-left: 45px;
-    position: relative;
-}
-
-.price-card-with-branches .price-header:first-child::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 25px;
-    height: 3px;
-    background: #FFD700;
-}
-
-.price-card-with-branches .price-period {
-    padding-left: 45px;
-}
-
+/* Стиль для елементів гілки */
 .price-branch-item {
     position: relative;
     padding-left: 45px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
+/* Горизонтальна лінія від вертикалі */
 .price-branch-item::before {
     content: '';
     position: absolute;
     left: 20px;
     top: 50%;
-    width: 25px;
-    height: 3px;
-    background: #FFD700;
+    width: 15px; /* Коротша лінія */
+    height: 2px;
+    background: rgba(255, 215, 0, 0.4);
+}
+
+/* Закруглення в місці з'єднання */
+.price-branch-item::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border: 2px solid rgba(255, 215, 0, 0.4);
+    border-radius: 50%;
+    background: #1a1a1a;
+    transform: translate(-50%, -50%);
 }
 
 .price-branch-item:last-child {
     margin-bottom: 0;
+}
+
+/* Закруглення на останньому елементі */
+.price-branch-item:last-child::before {
+    border-bottom-left-radius: 8px;
 }
 html {
     overflow-x: hidden;
