@@ -55,7 +55,43 @@ body::before {
 }
 
  
+.price-branches {
+    position: relative;
+    padding-left: 20px;
+    margin-top: 12px;
+}
 
+.price-branches::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #FFD700;
+    opacity: 0.4;
+}
+
+.price-branch-item {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 8px;
+}
+
+.price-branch-item::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    width: 15px;
+    height: 2px;
+    background: #FFD700;
+    opacity: 0.4;
+}
+
+.price-branch-item:last-child {
+    margin-bottom: 0;
+}
 html {
     overflow-x: hidden;
     width: 100%;
@@ -1222,14 +1258,20 @@ header {
     </div>
     <span class="price-period">10 занять на 2 місяцi із професійним тренером</span>
     
-    <div class="price-header" style="margin-top: 8px;">
-        <span style="color: #FFD700; font-weight: 600; font-size: 0.9rem;">Iндивiдуальне заняття</span>
-        <span style="color: #FFD700; font-weight: 800; font-size: 1.1rem;">350₴</span>
-    </div>
-    
-    <div class="price-header" style="margin-top: 4px;">
-        <span style="color: #FFD700; font-weight: 600; font-size: 0.9rem;">Групове заняття</span>
-        <span style="color: #FFD700; font-weight: 800; font-size: 1.1rem;">250₴</span>
+    <div class="price-branches">
+        <div class="price-branch-item">
+            <div class="price-header" style="margin-top: 0;">
+                <span style="color: #FFD700; font-weight: 600; font-size: 0.9rem;">Iндивiдуальне заняття</span>
+                <span style="color: #FFD700; font-weight: 800; font-size: 1.1rem;">350₴</span>
+            </div>
+        </div>
+        
+        <div class="price-branch-item">
+            <div class="price-header" style="margin-top: 0;">
+                <span style="color: #FFD700; font-weight: 600; font-size: 0.9rem;">Групове заняття</span>
+                <span style="color: #FFD700; font-weight: 800; font-size: 1.1rem;">250₴</span>
+            </div>
+        </div>
     </div>
 </div>
  
