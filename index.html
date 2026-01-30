@@ -58,7 +58,7 @@ body::before {
 .price-branches {
     position: relative;
     margin-top: 12px;
-    padding-left: 35px;
+    padding-left: 0; /* Прибрали відступ */
 }
 
 .price-card-with-branches {
@@ -86,15 +86,15 @@ body::before {
 .price-branches::before {
     content: '{';
     position: absolute;
-    left: 0;
+    left: -25px; /* Виносимо ліворуч за межі блоку */
     top: 50%;
     transform: translateY(-50%);
-    font-size: 120px; /* Розмір дужки */
+    font-size: 100px; /* Трохи зменшив розмір */
     line-height: 1;
     color: #FFD700;
-    opacity: 0.6;
-   font-family: 'Courier New', 'Consolas', monospace;
-font-weight: 400;
+    opacity: 1; /* Повністю непрозора */
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-weight: 300;
 }
 
 .price-branch-item {
