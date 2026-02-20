@@ -1366,11 +1366,11 @@ header {
 
 
 
-<div style="background-color: transparent; padding: 20px; text-align: center;">
-    <div style="display: inline-block; border: 2px solid #ffcc00; padding: 10px 20px; border-radius: 5px;">
-        <p style="color: #ffcc00; font-family: 'Arial Black', sans-serif; text-transform: uppercase; margin: 0; font-size: 14px; letter-spacing: 1px;">
+<div style="background-color: transparent; padding: 15px; text-align: center;">
+    <div style="display: inline-block; border: 1px solid #ffcc00; padding: 6px 15px; border-radius: 4px; opacity: 0.8;">
+        <p style="color: #ffcc00; font-family: sans-serif; margin: 0; font-size: 11px; font-weight: 300; letter-spacing: 0.5px; text-transform: uppercase;">
             Відвідувачів сьогодні: 
-            <span id="fake-counter" style="font-size: 18px; margin-left: 5px;">10</span>
+            <span id="fake-counter" style="font-weight: 400; margin-left: 3px;">10</span>
         </p>
     </div>
 
@@ -1588,17 +1588,12 @@ setTimeout(() => {
     });
 });
 </script>
- <script>
+<script>
 function updateFakeCounter() {
     setTimeout(function() {
-        // Отримуємо кількість візитів з пам'яті браузера
         let count = localStorage.getItem('visit_count') || 1;
-        
-        // При кожному оновленні додаємо +1 (імітація активності)
         count = parseInt(count) + 1;
         localStorage.setItem('visit_count', count);
-        
-        // Виводимо результат помножений на 10
         document.getElementById('fake-counter').innerText = count * 10;
     }, 500);
 }
