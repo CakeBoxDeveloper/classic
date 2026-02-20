@@ -1366,11 +1366,18 @@ header {
 
 
 
-<div style="position: relative; z-index: 9999; text-align: center; padding: 20px; background: #fff;">
-    <p style="color: #000; font-family: sans-serif; font-size: 12px; margin-bottom: 5px;">Статистика посещений:</p>
-    <a href="https://hits.seeyoufarm.com">
-        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fclassic.mk.ua&count_bg=%23222222&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=просмотры&edge_flat=false" alt="Hits"/>
-    </a>
+<div style="background-color: #1a1a1a; padding: 20px; text-align: center; border-top: 1px solid #ffcc00;">
+    <div style="display: inline-block; border: 2px solid #ffcc00; padding: 10px 20px; border-radius: 5px;">
+        <p style="color: #ffcc00; font-family: 'Arial Black', sans-serif; text-transform: uppercase; margin: 0; font-size: 14px; letter-spacing: 1px;">
+            Посетителей сегодня: 
+            <span id="fake-counter" style="font-size: 18px; margin-left: 5px;">10</span>
+        </p>
+    </div>
+
+    <img id="real-hits" 
+         src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fclassic.mk.ua&count_bg=%230000000&title_bg=%230000000&title=views" 
+         style="display:none;" 
+         onload="updateFakeCounter()">
 </div>
 
  
@@ -1581,7 +1588,22 @@ setTimeout(() => {
     });
 });
 </script>
- 
+ <script>
+function updateFakeCounter() {
+    // Ждем секунду, чтобы счетчик успел обновиться на сервере
+    setTimeout(function() {
+        // Мы используем localStorage, чтобы хранить "базовое" число, 
+        // так как SVG-картинка не отдает текст напрямую через JS легко.
+        // Это решение будет имитировать рост:
+        let count = localStorage.getItem('visit_count') || 1;
+        count = parseInt(count) + 1;
+        localStorage.setItem('visit_count', count);
+        
+        // Умножаем на 10 согласно вашему правилу
+        document.getElementById('fake-counter').innerText = count * 10;
+    }, 500);
+}
+</script>
  
 </body>
 </html>
