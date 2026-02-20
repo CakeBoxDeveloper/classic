@@ -1366,10 +1366,10 @@ header {
 
 
 
-<div style="background-color: #1a1a1a; padding: 20px; text-align: center; border-top: 1px solid #ffcc00;">
+<div style="background-color: transparent; padding: 20px; text-align: center;">
     <div style="display: inline-block; border: 2px solid #ffcc00; padding: 10px 20px; border-radius: 5px;">
         <p style="color: #ffcc00; font-family: 'Arial Black', sans-serif; text-transform: uppercase; margin: 0; font-size: 14px; letter-spacing: 1px;">
-            Посетителей сегодня: 
+            Відвідувачів сьогодні: 
             <span id="fake-counter" style="font-size: 18px; margin-left: 5px;">10</span>
         </p>
     </div>
@@ -1590,16 +1590,15 @@ setTimeout(() => {
 </script>
  <script>
 function updateFakeCounter() {
-    // Ждем секунду, чтобы счетчик успел обновиться на сервере
     setTimeout(function() {
-        // Мы используем localStorage, чтобы хранить "базовое" число, 
-        // так как SVG-картинка не отдает текст напрямую через JS легко.
-        // Это решение будет имитировать рост:
+        // Отримуємо кількість візитів з пам'яті браузера
         let count = localStorage.getItem('visit_count') || 1;
+        
+        // При кожному оновленні додаємо +1 (імітація активності)
         count = parseInt(count) + 1;
         localStorage.setItem('visit_count', count);
         
-        // Умножаем на 10 согласно вашему правилу
+        // Виводимо результат помножений на 10
         document.getElementById('fake-counter').innerText = count * 10;
     }, 500);
 }
